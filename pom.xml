@@ -10,6 +10,7 @@
     <packaging>war</packaging>
 
     <dependencies>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -21,18 +22,21 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
+
         <!-- jstl的jar -->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
         <!-- 日志处理 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.2</version>
         </dependency>
+
         <!-- servelt相关 -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -40,27 +44,32 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+
         <!-- 引入spring的jar包 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
             <version>1.8.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.2</version>
         </dependency>
+
         <dependency>
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
@@ -72,28 +81,31 @@
             <artifactId>spring-jdbc</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.3.3</version>
         </dependency>
+
         <!-- springmvc相关 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
+
         <!-- 单元测试 -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -113,12 +125,14 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.2</version>
         </dependency>
+
         <!-- 文件上传 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.3.3</version>
         </dependency>
+
         <!-- 验证 -->
         <!-- jackson -->
         <dependency>
@@ -131,49 +145,53 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.5</version>
         </dependency>
+
         <!-- mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.4.5</version>
         </dependency>
-
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>1.3.2</version>
         </dependency>
+
         <!-- 分页插件 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
             <version>5.0.3</version>
         </dependency>
+
         <!-- 数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.18</version>
         </dependency>
+
         <!-- mysql驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.39</version>
         </dependency>
+
         <!-- poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>3.17</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.17</version>
         </dependency>
 
+        <!-- shiro核心包 -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
@@ -191,9 +209,19 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.2.5</version>
         </dependency>
+        <!-- shiro 缓存 -->
+        <dependency>
+            <artifactId>ehcache-core</artifactId>
+            <groupId>net.sf.ehcache</groupId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>1.2.5</version>
+        </dependency>
 
-
-    </dependencies>
+</dependencies>
 
     <build>
         <finalName>koala</finalName>
@@ -245,7 +273,5 @@
 
 
     </build>
-
-
 
 </project>

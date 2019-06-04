@@ -1,0 +1,683 @@
+html {
+  overflow-y: scroll;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font: 12px/1.5 \5b8b\4f53, Arial, sans-serif; /*background:#ffffff;*/
+}
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+blockquote,
+p,
+img {
+  padding: 0;
+  margin: 0;
+}
+table,
+td,
+tr,
+th {
+  font-size: 12px;
+}
+ol,
+ul {
+  list-style: none;
+}
+li {
+  list-style-type: none;
+}
+img {
+  vertical-align: top;
+  border: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: normal;
+}
+address,
+cite,
+code,
+em,
+th,
+i {
+  font-weight: normal;
+  font-style: normal;
+}
+.hx a,
+.hx em,
+.fB {
+  font-weight: bold;
+}
+.clearfix:after {
+  display: block;
+  overflow: hidden;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  content: ".";
+}
+a {
+  color: #252525;
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  color: #ba2636;
+}
+a:active {
+  color: #ba2636;
+}
+
+header {
+  width: 100%;
+  height: 40px;
+  background: #0f090a;
+}
+header nav {
+  width: 1090px;
+  height: 40px;
+  background: #0f090a;
+  margin: 0 auto;
+}
+nav #top-left {
+  width: 450px;
+  height: 40px;
+  float: left;
+}
+nav #top-left li {
+  float: left;
+  margin-left: 16px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  color: rgba(153, 153, 153);
+}
+/* 二维码 */
+nav #top-left .img a {
+  position: absolute;
+}
+nav #top-left .img .erweima-span {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #ebe3e4 transparent;
+  position: relative;
+  top: 0px;
+  left: 14px;
+}
+nav #top-left .img img {
+  display: none;
+  width: 128px;
+  height: 178px;
+  z-index: 40;
+  position: relative;
+  top: 40px;
+  left: -60px;
+}
+nav #top-left .img:hover .erweima-span {
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #ebe3e4 transparent;
+  position: relative;
+  top: 20px;
+  left: 10px;
+  z-index: 10;
+}
+nav #top-left .img:hover img {
+  display: block;
+  position: relative;
+  top: 20px;
+  left: -50px;
+}
+
+nav #top-left li a {
+  color: rgba(153, 153, 153);
+}
+nav #top-left li a:hover {
+  color: #ebe3e4;
+}
+/* 用户登录状态 */
+#yidenglu {
+  display: none;
+  width: 400px;
+  height: 40px;
+  float: left;
+  color: rgba(153, 153, 153);
+}
+#delu-span {
+  float: left;
+  width: 51px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+}
+#user-name {
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  margin-left: -15px;
+  font-size: 14px;
+}
+#tuichu {
+  font-size: 12px;
+  float: left;
+  line-height: 40px;
+  margin-left: 20px;
+  text-decoration: none;
+}
+nav #yidenglu .shouji {
+  position: absolute;
+  float: left;
+  font-size: 12px;
+  line-height: 40px;
+  margin-left: 30px;
+}
+nav #yidenglu .erweima-span {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #ebe3e4 transparent;
+  position: relative;
+  top: 8px;
+  left: 46px;
+}
+nav #yidenglu img {
+  display: none;
+  width: 128px;
+  height: 178px;
+  z-index: 40;
+  position: relative;
+  top: 34px;
+  left: -27px;
+}
+nav #yidenglu .shouji:hover .erweima-span {
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #ebe3e4 transparent;
+  position: relative;
+  top: -23px;
+  left: 10px;
+  z-index: 99;
+}
+nav #yidenglu .shouji:hover img {
+  display: block;
+  position: relative;
+  top: -23px;
+  left: -50px;
+}
+nav #yidenglu a {
+  color: rgba(153, 153, 153);
+}
+nav #yidenglu a:hover {
+  color: #ebe3e4;
+}
+/* top-right */
+nav #center_1 {
+  border: 5px solid;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: #cecece transparent transparent transparent;
+  left: 64px;
+  top: 18px;
+}
+
+nav #center_2 {
+  border: 5px solid;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: #cecece transparent transparent transparent;
+  left: 153px;
+  top: 18px;
+}
+
+nav #center_3 {
+  border: 5px solid;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: #cecece transparent transparent transparent;
+  left: 248px;
+  top: 18px;
+}
+
+nav #center_4 {
+  border: 5px solid;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: #cecece transparent transparent transparent;
+  left: 355px;
+  top: 18px;
+}
+
+nav #center_5 {
+  border: 5px solid;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: #cecece transparent transparent transparent;
+  left: 415px;
+  top: 18px;
+}
+#topnanv {
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  float: left;
+  width: 640px;
+}
+
+#anvlfteb {
+  float: left;
+  height: 35px;
+  position: relative;
+}
+
+.defu {
+  float: left;
+}
+.defu a {
+  color: rgba(153, 153, 153);
+  margin: 0 10px;
+}
+
+.posbox a {
+  display: block;
+  color: rgba(153, 153, 153);
+  width: 100px;
+}
+
+.defu a:hover,
+.posbox a:hover {
+  color: #fff;
+}
+
+.posbox {
+  width: 74px;
+  float: left;
+  margin: 0 10px;
+}
+
+.posbox i {
+  width: 7px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  overflow: hidden;
+}
+
+#topnanv .anvh a {
+  background: #111;
+}
+
+#topnanv .anvh i {
+  background-position: 0 -75px;
+}
+
+.posiabox {
+  position: absolute;
+  top: 32px;
+  left: 1px;
+  display: none;
+  padding-top: 10px;
+}
+
+#seledbox {
+  width: 114px;
+}
+
+#seledbox div {
+  background: #fff;
+  box-shadow: 0 0 8px #999;
+  border: 1px solid #999;
+  font-size: 12px;
+  padding: 5px 0;
+  overflow: hidden;
+}
+
+#seledbox a {
+  color: #444;
+  text-decoration: none;
+  width: 100px;
+  height: 20px;
+  overflow: hidden;
+  display: block;
+  line-height: 20px;
+  padding: 6px 0 6px 12px;
+  border-bottom: 1px dotted #ddd;
+}
+
+#seledbox a:hover {
+  background: #eee;
+}
+
+#seledbox img {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+#loginbtm {
+  float: right;
+  padding: 0 15px;
+  color: #fff;
+  background: #900;
+  position: relative;
+}
+
+#top {
+  width: 100%;
+  height: 90px;
+}
+
+#docHead {
+  width: 1100px;
+  height: 90px;
+  margin: 3px auto;
+}
+#docHead .logo-t {
+  width: 330px;
+  height: 65px;
+  margin-top: 20px;
+}
+#docHead .m-searchiptbox {
+  width: 485px;
+  height: 90px;
+}
+/* 我的购物车 */
+section {
+  width: 100%;
+  height: auto;
+}
+/* 列表头 */
+.cartbox {
+  width: 1100px;
+  height: 400px;
+  margin: 0 auto;
+}
+.m-mycart {
+  width: 1100px;
+  height: 20px;
+
+  line-height: 20px;
+}
+.m-mycart span {
+  float: left;
+  font-size: 14px;
+  margin: 0 4px;
+  font-weight: 700;
+}
+.m-mycart .tt {
+  font-weight: 900;
+  font-size: 14px;
+  font-family: monospace;
+}
+.m-mycart .y-tt {
+  float: right;
+  font-size: 10px;
+  margin-right: 100px;
+  font-weight: normal;
+}
+.head {
+  height: 40px;
+  border: 1px solid rgb(234, 234, 234);
+}
+.head .col {
+  float: left;
+  width: 134px;
+  height: 40px;
+}
+.head .col input{
+  float: left;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  margin: 10px 2px 10px 10px;
+  
+}
+.head .col label {
+  float: left;
+  font-size: 12px;
+  display: block;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+}
+.head .col2 p {
+  float: left;
+  color: #cecece;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+.s-shangpin {
+  width: 422px;
+  font-size: 14px;
+}
+.d-jia {
+  width: 150px;
+}
+.s-shu {
+  width: 147px;
+}
+.j-jin {
+  width: 128px;
+}
+.c-cao {
+  width: 107px;
+}
+.ware {
+  width: 1100px;
+  height: 40px;
+  font-size: 14px;
+}
+.ware input {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 10px 10px 10px 10px;
+}
+.ware span {
+  display: inline-block;
+  background: #0f090a;
+  width: 32px;
+  height: 18px;
+  color: #eee;
+  margin: 0 10px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* 详情 */
+.gooditm-box{
+  background: rgb(255, 251, 240);
+  width: 1058px;
+  height: auto;
+}
+.gooditm {
+  background: rgb(255, 251, 240);
+  width: 1058px;
+  height: 81px;
+  border: 1px solid #999;
+  padding: 20px;
+  margin: 10px 0;
+}
+.gooditm div {
+  float: left;
+}
+.u-check {
+  width: 47px;
+  height: 80px;
+}
+.u-check input{
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 30px 15px;
+}
+ .u-img {
+  width: 80px;
+  height: 80px;
+  margin: 0 10px;
+} 
+.u-img  img{
+  width: 80px;
+  height: 80px;
+  margin: 0 10px;
+}
+.u-spname {
+  width: 370px;
+  height: 80px;
+  margin: 0 20px;
+  color: #0f090a;
+}
+.u-jage {
+  width: 100px;
+  height: 80px;
+  margin: 0 10px;
+  color: #0f090a;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 80px;
+  text-align: center;
+}
+.u-btn {
+  width: 130px;
+  height: 40px;
+  margin: 0 10px;
+  float: left;
+  padding: 20px;
+}
+.u-btn .last-number {
+  float: left;
+  width: 25px;
+  height: 25px;
+}
+.u-btn .u-ipt {
+  width: 40px;
+  float: left;
+  height: 21px;
+  text-align: center;
+  font-size: 14px;
+}
+.u-btn .next-number {
+  float: left;
+  width: 25px;
+  height: 25px;
+}
+.u-jage2 {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.u-delete {
+  width: 100px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 14px;
+}
+.j-suan {
+  width: 1058px;
+  height: 40px;
+  background: azure;
+  padding: 20px;
+  border: 1px solid #817d7e;
+  margin: 10px auto;
+
+}
+.j-suan .j-check {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+.j-suan .j-check-quan {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+}
+.j-delete {
+  margin-left: 20px;
+  font-size: 14px;
+  line-height: 40px;
+  float: left;
+}
+.j-zong {
+  font-size: 14px;
+  float: left;
+  margin-left:630px 
+}
+.j-zong i {
+  color: rgb(248, 6, 6);
+  font-weight: 800;
+  font-size: 22px;
+}
+.j-xuan {
+  font-size: 18px;
+  color: rgb(248, 6, 6);
+  font-weight: 700;
+  float: left;
+  margin-left:500px
+}
+.j-mai {
+  width: 80px;
+  height: 80px;
+  background: rgb(248, 6, 6);
+  font-size: 18px;
+  line-height: 80px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  float: left;
+  margin:-79px 0 0 999px 
+
+}

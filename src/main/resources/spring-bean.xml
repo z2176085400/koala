@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-   <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:aop="http://www.springframework.org/schema/aop"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
@@ -13,26 +13,26 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
-       <!-- 扫描注解 
-       	在spring配置中，扫描除了@Controller的注解
-       	spring相当于父容器
-       -->
-       
-       <context:component-scan base-package="com.koala">
-       <!-- 扫描时，排除指定的注解 -->
-       		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-       </context:component-scan> 
-    
-     
-     <!-- 1 druid数据源 -->
+
+	<!-- 1 扫描注解 -->
+
+	<!-- 扫描非控制器的注解 -->
+	<!-- <context:component-scan base-package="com.qfedu.service.impl"></context:component-scan> -->
+	<context:component-scan base-package="com.koala">
+		<!-- 排除不需要扫描的注解 -->
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+	<!-- 2 配置数据库连接池  druid -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		  init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/koala" />
 		<property name="username" value="root" />
-		<property name="password" value="1234567" />
+		<property name="password" value="admin" />
+
 		<!-- 配置初始化大小、最小、最大 -->
-		<property name="initialSize" value="1" />
+		<property name="initialSize" value="5" />
 		<property name="minIdle" value="1" />
 		<property name="maxActive" value="10" />
 		<!-- 配置获取连接等待超时的时间 -->
@@ -45,42 +45,95 @@
 		<!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
 		<property name="testOnBorrow" value="true" />
 		<property name="testOnReturn" value="false" />
-		
+
 	</bean>
-	
-	<!-- 2 创建Mybatis的工厂对象 -->
+
+	<!-- 3 创建SqlSessionFactory对象， 设置mybatis的主配置和映射配置 -->
 	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
+		  class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!--设置数据库连接池 -->
 		<property name="dataSource" ref="dataSource"></property>
-		
-		<!-- 加载mybatis主配置文件
-			classpath: 表示文件所在的路径
-				如果是普通的java程序，classpath表示bin目录的路径
-				如果是web程序，classpath 表示classes目录的路径
-		 -->
+		<!-- 加载mybatis主配置文件  classpath: 编译后文件所在路径 -->
 		<property name="configLocation" value="classpath:mybatis.xml"/>
-		
-		<!-- 加载映射文件
-			*.xml 表示所有的xml文件
-		 -->
+		<!-- 加载mybatis映射文件    加载指定路径下，所有的后缀是xml的文件  -->
 		<property name="mapperLocations" value="classpath:com/koala/mapping/*.xml"/>
 	</bean>
 
-	<!--3设置Mybatis的映射接口 -->
+	<!-- 4 扫描相关的dao接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-		<!-- 设置dao所在包 -->
+		<!-- 设置dao接口所在包 -->
 		<property name="basePackage" value="com.koala.dao"></property>
 	</bean>
 
+	<!-- 5 事务管理对象 -->
+	<bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 6 设置事务的增强 -->
+	<tx:advice id="txAdvice" transaction-manager="txManage">
+		<tx:attributes>
+			<tx:method name="add*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="delete*" read-only="false"  propagation="REQUIRED"/>
+			<tx:method name="update*" read-only="false"  propagation="REQUIRED"/>
+			<tx:method name="find*" read-only="true"  propagation="REQUIRED"/>
+			<!-- 针对其余的方法 -->
+			<tx:method name="*" propagation="NOT_SUPPORTED"/>
+
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 7 aop的配置 -->
+	<aop:config>
+		<!-- 切入点 -->
+		<aop:pointcut expression="execution(* com.koala.service.impl.*.*(..))" id="pc"/>
+
+		<!-- 通知 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
+
+	</aop:config>
+
+
 	<!-- 自定义Realm -->
-	<bean id="myRealm" class="com.rr.realm.MyRealm"/>
+	<bean id="myRealm" class="com.koala.realm.MyRealm"/>
 
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myRealm"/>
 		<property name="cacheManager" ref="cacheManager" />
+		<property name="rememberMeManager" ref="rememberMeManager" />
+	</bean>
+	<!-- 缓存管理器 使用Ehcache实现 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	</bean>
+
+	<!--&lt;!&ndash; 自定义realm进行加密处理 &ndash;&gt;
+	<bean id="myRealm" class="com.qfedu.realm.MyRealm">
+		&lt;!&ndash; 配置密码匹配器 &ndash;&gt;
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				加密算法为MD5
+				<property name="hashAlgorithmName" value="MD5"></property>
+				加密次数
+				<property name="hashIterations" value="1"></property>
+			</bean>
+		</property>
+	</bean>-->
+
+	<!-- remenberMe配置 -->
+	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="rememberMe" />
+		<!--  cookie 只能通过http协议获取，不能通过js读取-->
+		<property name="httpOnly" value="true" />
+		<!-- 记住7天（单位：秒） -->
+		<property name="maxAge" value="604800" />
+	</bean>
+	<!-- rememberMe管理器 -->
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}" />
+		<property name="cookie" ref="rememberMeCookie" />
 	</bean>
 
 	<!-- Shiro过滤器 -->
@@ -90,7 +143,16 @@
 		<!-- 未登陆时，访问需要认证的资源，则跳转到登录页面的配置 -->
 		<property name="loginUrl" value="/login.jsp"/>
 		<!-- 权限认证失败，则跳转到指定页面 -->
-		<property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+		<!--<property name="unauthorizedUrl" value="/unauthorized.jsp"/>-->
+
+		<!--  设置自定义的filter -->
+		<property name="filters">
+			<map>
+				<!--  注意key的值 -->
+				<entry key="perms" value-ref="myPermFilter" />
+			</map>
+		</property>
+
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
@@ -99,44 +161,27 @@
                  /user/admin*=authc
                  /user/student*/**=roles[teacher]
                  /user/teacher*/**=perms["user:create"] -->
-				<!--/user/login.do=anon-->
-				<!-- user下的所有内容都需要身份认证 -->
-				<!--/user/*=authc-->
+
+				<!-- 匿名验证 -->
+				/login.do=anon
+				/test1.do=perms["bcd"]
+				<!-- 配置退出的操作 -->
+				/logout.do = logout
+				<!-- 其他任意资源，必须登录后才能访问
+					使用rememberMe的情况下，判断是否可以直接访问时，使用user(authc==>user)进行验证
+				-->
+				/** = authc
 			</value>
 		</property>
 	</bean>
 
-	<!-- 4配置事务管理类 -->
-   	<bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-   		
-   		<property name="dataSource" ref="dataSource"></property>
-   	</bean>
-   
-    <!-- 5配置事务的特性 -->
-   <tx:advice id="txAdvice" transaction-manager="txManage">
-   		<tx:attributes>
-   			<!-- 针对使用事务的add开头的方法 
-   			read-only 是否只读，true 是，false 可读可写
-   			如果有插入等操作，设为为true，运行程序会报异常-->
-   			<tx:method name="add*" read-only="false" propagation="REQUIRED"/>
-   			<tx:method name="delete*" read-only="false"  propagation="REQUIRED"/>
-   			<tx:method name="update*" read-only="false"  propagation="REQUIRED"/>
-   			<tx:method name="find*" read-only="true"  propagation="REQUIRED"/>
-   			<!-- 针对其余的方法 -->
-   			<tx:method name="*" propagation="NOT_SUPPORTED"/>
-   			
-   		</tx:attributes>
-   </tx:advice>
-   
-   <!-- 6 AOP配置 -->
-   <aop:config>
-   		<!-- 切入点 -->
-   		<aop:pointcut expression="execution(* com.koala.service.impl.*.*(..))" id="pc"/>
-   
-   		<!-- 通知 -->
-   		<aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
-   
-   </aop:config>
-    
-        
+	<!-- 手动创建了一个logout过滤器的对象，指定退出后跳转的页面，该配置不是必须的，
+		如果不配置，redirectUrl 对应的值是 -->
+	<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+		<property name="redirectUrl" value="/login.jsp" />
+	</bean>
+
+	<!--  创建自定义的授权处理的对象 -->
+	<bean id="myPermFilter" class="com.koala.realm.MyPermsFilter"></bean>
+
 </beans>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/cart.css">
+    <script src="../lb/jquery-1.11.3.js"></script>
+    <script src="../this_locality.js/index.top.js"></script>
+    <script src="../lb/axios.js"></script>
+    <script src="../this_locality.js/cook.js"></script>
+    <script src="../this_locality.js/comfy.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- top-left未登录 -->
+            <ul id="top-left">
+                <li>考拉欢迎您！</li>
+                <li><a href="reg.html">登录</a></li>
+                <li><a href="reg.html">免费注册</a></li>
+                <li class="img">
+                    <a class="shouji" href="#">手机考拉</a>
+                    <span class="erweima-span"></span>
+                    <img src="../img/top-erweima.png"  alt="">
+                </li>
+            </ul>
+            <!-- top-left登录 -->
+            <div id="yidenglu">
+                <span id="delu-span">你好:</span>
+                <i id="user-name"></i>
+                <a href="javascript:;" id="tuichu">退出</a>
+                <a class="shouji" href="#">手机考拉
+                    <span class="erweima-span"></span>
+                    <img src="../img/top-erweima.png" alt="">
+                </a>
+            </div>
+            <!-- top-right -->
+
+            <div id="topnanv">
+                <div class="defu">
+                    <a href="index.html" target="_self">每日签到</a>
+                    <a href="#" target="_self">我的订单</a>
+                </div>
+                <div id="anvlfteb">
+                    <div selec="bbs" class="posbox"> <a href="#">个人中心</a> <i></i>
+                        <div id="center_1"></div>
+                    </div>
+                    <div selec="news" class="posbox"><a href="#">客户服务</a> <i></i>
+                        <div id="center_2"></div>
+                    </div>
+                    <div selec="post" class="posbox"><a href="#">充值中心</a> <i></i>
+                        <div id="center_3"></div>
+                    </div>
+                    <div selec="youhui" class="posbox xiaofei"><a href="#">消费者权益</a> <i></i>
+                        <div id="center_4"></div>
+                    </div>
+                    <div selec="other" class="posbox"><a href="#">更多</a> <i></i>
+                        <div id="center_5"></div>
+                    </div>
+                    <div id="seledbox" class="posiabox" style="display: none; left: 1px;">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+
+    </header>
+    <div id="top">
+        <div id="docHead">
+            <a href="index.html" class="logo-t"><img src="../img/logo.png" alt=""></a>
+        </div>
+    </div>
+    <section>
+        <div class="cartbox">
+            <h3 class="m-mycart">
+                <span>我的购物车</span>
+                <span class="tt"></span>
+                <i class="y-tt">考拉自营商品已免运费</i>
+            </h3>
+            <div class="head">
+                <div class="col">
+                    <input class="g-check d-button" type="checkbox">
+                    <label>全选</label>
+                </div>
+                <div class="col2">
+                    <p class="s-shangpin">商品信息</p>
+                    <p class="d-jia">单价(元)</p>
+                    <p class="s-shu">数量</p>
+                    <p class="j-jin">金额(元)</p>
+                    <p class="c-cao">操作</p>
+                </div>
+            </div>
+            <div class="ware">
+                <input class="g-check d-button" type="checkbox">
+                <span>自营</span>
+                <strong style="font-size:14px">自营保税仓</strong>
+            </div>
+            <div class="gooditm-box">
+            <!--     <div class="gooditm">
+                  <div class="u-check">
+                        <input type="checkbox">
+                    </div>
+                    <div class="u-img">
+                        <a href="javascript:;">
+                         <img src="https://haitao.nosdn1.127.net/bf9d94b00c414dbf955f623bc6eaa9d91524041917361jg4v7hjw12173.jpg?imageView&thumbnail=80x0&quality=85" alt="">
+                        </a>
+                    </div>
+                    <div class="u-spname">
+                        <a href="javascript:;">撒旦教按实际打款哈说可就</a>
+                    </div>
+                    <div class="u-jage">
+                        89
+                    </div>
+                    <div class="u-btn">
+                        <input type="button" class="last-number" value="-">
+                        <input class="u-ipt" type="text" value="1">
+                        <input type="button" class="next-number" value="+">
+                    </div>
+                    <div class="u-jage2">
+                        89
+                    </div>
+                    <div class="u-delete">
+                        <a href="javascript:;">删除</a>
+                    </div>
+                </div> -->
+            </div>
+            
+            <!-- 结算 -->
+            <div class="j-suan">
+                    <input class="j-check g-check d-button"  type="checkbox">
+                    <span class="j-check-quan">全选</span>
+                     <a class="j-delete" href="#">删除选中的商品</a>
+                   <p class="j-xuan"><span>已选商品</span><span class="num_num"></span>件</p>
+                     <p class="j-zong"><span>总价(不含运费):</span><i class="j_zongjia"></i></p>
+                   <a class="j-mai" href="javascript:;">去结算</a>
+                </div>
+        </div>
+    </section>
+    <script src="../js/cart.js"></script>
+</body>
+
+</html>

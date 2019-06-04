@@ -1,0 +1,70 @@
+.lunbo-lunbo{
+    width: 100%;
+    height:400px;
+    background: aqua
+}
+.item li{
+    list-style: none;
+    width: 100%;
+    height: 400px;
+    position: absolute;
+   
+    opacity: 0;
+
+}
+.item li img{
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.leftBtn{
+    border: 0;
+    position: absolute;
+    left: 10px;
+    top: 146px;
+    width: 30px;
+    height:50px;
+    display: block;
+    border: 0;
+    background: rgba(100,100,95,0.3);
+    outline: none;
+
+    
+}
+
+.rightBtn{
+    position: absolute;
+    right: 10px;
+    top: 146px;
+    width: 30px;
+    height:50px;
+    display: block;
+    border: 0;
+    background: rgba(100,100,95,0.3);
+    outline: none;
+
+}
+
+.box{
+    position: relative;
+    width: 100%;
+    height: 340px;
+}
+.page{
+    position: absolute;
+    bottom: 10px;
+    left: 500px;
+    height: 30px;
+    /*width: 300px;*/
+}
+.page li{
+    float: left;
+    width: 30px;
+    height: 30px;
+    list-style: none;
+    background: red;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+
+}
