@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koala.dao.HuaiWeiMapper">
-  <resultMap id="BaseResultMap" type="com.koala.entity.HuaiWei">
+  <resultMap id="BaseResultMap" type="com.koala.entity.HuaWei">
     <id column="hid" jdbcType="INTEGER" property="hid" />
     <result column="typeName" jdbcType="VARCHAR" property="typename" />
     <result column="typeLevel" jdbcType="INTEGER" property="typelevel" />
@@ -21,13 +21,13 @@
     delete from t_huawei
     where hid = #{hid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.koala.entity.HuaiWei">
+  <insert id="insert" parameterType="com.koala.entity.HuaWei">
     insert into t_huawei (hid, typeName, typeLevel, 
       sid, status)
     values (#{hid,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR}, #{typelevel,jdbcType=INTEGER}, 
       #{sid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.koala.entity.HuaiWei">
+  <insert id="insertSelective" parameterType="com.koala.entity.HuaWei">
     insert into t_huawei
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="hid != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.koala.entity.HuaiWei">
+  <update id="updateByPrimaryKeySelective" parameterType="com.koala.entity.HuaWei">
     update t_huawei
     <set>
       <if test="typename != null">
@@ -82,7 +82,7 @@
     </set>
     where hid = #{hid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.koala.entity.HuaiWei">
+  <update id="updateByPrimaryKey" parameterType="com.koala.entity.HuaWei">
     update t_huawei
     set typeName = #{typename,jdbcType=VARCHAR},
       typeLevel = #{typelevel,jdbcType=INTEGER},

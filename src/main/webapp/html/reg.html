@@ -11,6 +11,7 @@
     <script src="../lb/axios.js"></script>
     <script src="../this_locality.js/comfy.js"></script>
     <script src="../this_locality.js/cook.js"></script>
+    <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 
 </head>
 
@@ -29,33 +30,19 @@
             <a href="index.html"><img src="../img/reg-left.PNG" id="reg-left" alt="图片无法加载" title="网易考拉"></a>
             <div id="zhuce-right">
                 <div class="zhuce-top">
-                    <a href="#" class="btn-zhuce">注册</a>|
-                    <a href="#" class="btn-denglu"> 登录</a>
+                    <a href="#" class="btn-zhuce">注册</a>
                 </div>
 
                 <!-- 注册 -->
-                <form action="#" method="post" class="zhuce-ipt" style="display: none">
-                    <input type="text" class="zhuce name" placeholder="用户名" >
-                    <input type="text" class="zhuce elail" placeholder="邮箱" required="">
-                    <input type="password" class="zhuce password" placeholder="密码" required="">
-                    <input type="text" class="zhuce number" placeholder="手机号码" required="">
-                    <input type="button" class="zhuce-btn" value="免费注册">
+                <form action="#" method="post" class="zhuce-ipt" onsubmit="return false">
+                    <input type="text" class="zhuce name" name="username" placeholder="用户名" >
+                    <!--<input type="text" class="zhuce elail" placeholder="邮箱" >-->
+                    <input type="password" class="zhuce password" name="password" placeholder="密码" >
+                    <!--<input type="text" class="zhuce number" placeholder="手机号码" >-->
+                    <input type="submit" class="zhuce-btn" value="免费注册">
                 </form>
 
 
-
-
-
-                <!-- 登录 -->
-                <form action="" class="delu">
-                    <input type="text" class="ipt" placeholder="请输入您的账号" value="2245788656">
-                    <input type="password" class="ipt ipts" placeholder="请输入您的密码" value="2245788656">
-                    <input type="checkbox" class="check"><span class="check-span" style="color:springgreen">10天免登陆</span>
-                    <input type="button" class="login-denglu" value="登录">
-                    <a href="#" class="wangjimima">记住密码?</a>
-
-                    
-                </form>
 
             </div>
         </div>
@@ -102,139 +89,54 @@
             </div>
         </div>
     </footer>
-    <script>
-        ; (function ($) {
-            var user_Boolean = false;
-            var password_Boolean = false;
-            var emaile_Boolean = false;
-            var Mobile_Boolean = false;
-            //注册表单验证
-            //用户名
-            $(".name").blur(function () {
-                if ((/^[a-z0-9_-]{4,11}$/).test($(".name").val())) {
-                    $('.name').html("?").css("color", "green");
-                    user_Boolean = true;
-                } else {
-                    $('.name').html("×").css("color", "red");
-                    user_Boolean = false;
-                }
-            })
-            //邮箱
-            $('.elail').blur(function () {
-                if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($(".elail").val())) {
-                    $('.elail').html("?").css("color", "green");
-                    emaile_Boolean = true;
-                } else {
-                    $('.elail').html("×").css("color", "red");
-                    emaile_Boolean = false;
-                }
-            });
 
-            //密码
-            $('.password').blur(function () {
-                if ((/^[a-z0-9_-]{6,16}$/).test($(".password").val())) {
-                    $('.password').html("?").css("color", "green");
-                    password_Boolean = true;
-                } else {
-                    $('.password').html("×").css("color", "red");
-                    password_Boolean = false;
-                }
-            });
-            //手机号
-            $('.number').blur(function () {
-                if ((/^1[34578]\d{9}$/).test($(".number").val())) {
-                    $('.number').html("?").css("color", "green");
-                    Mobile_Boolean = true;
-                } else {
-                    $('.number').html("×").css("color", "red");
-                    Mobile_Boolean = false;
-                }
-            });
-            //切换按钮
-            $(".btn-zhuce").click(function () {
-                $(".delu").hide()
-                $(".zhuce-ipt").show()
-
-
-            })
-
-            $(".btn-denglu").click(function () {
-                $(".delu").show()
-                $(".zhuce-ipt").hide()
-            })
-
-
-            //注册
-            let name = document.querySelector(".name")
-            let _password = document.querySelector(".password")
-            console.log($(".zhuce-btn"))
-            $(".zhuce-btn").click(function () {
-                //console.log(11)
-                //console.log($(".name"))
-                axios.get(regApi, {
-                    params: {
-                        username: name.value,
-                        password: _password.value,
-                    }
-                }).then(res => {
-                   // console.log(name.value,_password.value)
-                    if (user_Boolean && password_Boolean && emaile_Boolean && Mobile_Boolean == true) {
-                        alert("注册成功");
-                    } else {
-                        alert("请完善信息");
-                    }
-                }).catch(error => {
-                   // console.log(error)
-                })
-            })
-
-            //登录
-            $(".login-denglu").click(function () {
-                let name = document.querySelector(".ipt")
-            let _password = document.querySelector(".ipts")
-
-                let _cheacShitian = document.querySelector(".check")
-                if ($(".ipt").val() == "" && $(".ipts").val() == "") {
-                    alert("用户名和密码不能为空")
-                }
-                else {
-                    axios.get(loginApi, {
-                        params: {
-                            username: name.value,//用户名
-                            password: _password.value,//密码
-                        }
-                    }).then(res => {
-                        console.log(name.value,_password.value)
-                        if (res.data.code == 1) {
-                            alert(res.data.msg);
-                            var day = 1;
-                            if (_cheacShitian.checked) {
-                                day = 10;
-                            }
-                            setCookie("id", res.data.data.id, day)
-                            setCookie("username", res.data.data.username, day)
-                             location.href = "index.html"
-
+<script type="text/javascript">
+    $(function(){
+        $("form").validate({
+            submitHandler:function(){
+                $.ajax({
+                    type:"post",
+                    url:"/koala/insertUser.do",
+                    data:$("form").serialize(),
+                    dataType:"json",
+                    success:function(data){
+                        if(data.code == 1){
+/*                            var card = data.info.username;
+                            var uid = data.info.uid;
+                            window.location.href = "index.html?" + card;*/
+                            alert("OK");
                         } else {
-                            alert(res.data.msg)
-
+                            alert(data.info);
                         }
-
-                    }).catch(error => {
-                        console.log(error)
-                    })
+                    }
+                })
+            },
+            rules:{
+                username:{
+                    required:true,
+                    minlength:6,
+                },
+                password:{
+                    required:true,
+                    minlength:6,
+                    maxlength:6
                 }
+            },
+            messages:{
+                username:{
+                    required:" 卡号不能为空",
+                    minlength:"卡号最少为6位"
+                },
+                password:{
+                    required:" 密码不能为空",
+                    minlength:" 请正确输入6位密码",
+                    maxlength:" 请正确输入6位密码"
+                }
+            }
+        })
+    })
+</script>
 
-            })
-
-
-
-
-        })(jQuery)
-
-
-
-    </script>
 </body>
 
 </html>

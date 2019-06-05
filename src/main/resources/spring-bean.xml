@@ -27,7 +27,7 @@
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		  init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/koala" />
+		<property name="url" value="jdbc:mysql://localhost:3306/koala?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
 		<property name="password" value="admin" />
 
@@ -45,7 +45,6 @@
 		<!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
 		<property name="testOnBorrow" value="true" />
 		<property name="testOnReturn" value="false" />
-
 	</bean>
 
 	<!-- 3 创建SqlSessionFactory对象， 设置mybatis的主配置和映射配置 -->
@@ -109,8 +108,8 @@
 		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
 	</bean>
 
-	<!--&lt;!&ndash; 自定义realm进行加密处理 &ndash;&gt;
-	<bean id="myRealm" class="com.qfedu.realm.MyRealm">
+	<!-- 自定义realm进行加密处理 -->
+<!--	<bean id="myRealm" class="com.koala.realm.MyRealm">
 		&lt;!&ndash; 配置密码匹配器 &ndash;&gt;
 		<property name="credentialsMatcher">
 			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
@@ -146,12 +145,12 @@
 		<!--<property name="unauthorizedUrl" value="/unauthorized.jsp"/>-->
 
 		<!--  设置自定义的filter -->
-		<property name="filters">
+<!--		<property name="filters">
 			<map>
-				<!--  注意key的值 -->
+				&lt;!&ndash;  注意key的值 &ndash;&gt;
 				<entry key="perms" value-ref="myPermFilter" />
 			</map>
-		</property>
+		</property>-->
 
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
@@ -170,7 +169,7 @@
 				<!-- 其他任意资源，必须登录后才能访问
 					使用rememberMe的情况下，判断是否可以直接访问时，使用user(authc==>user)进行验证
 				-->
-				/** = authc
+				<!--/** = authc-->
 			</value>
 		</property>
 	</bean>

@@ -1,6 +1,6 @@
 package com.koala.entity;
 
-public class HuaiWei {
+public class HuaWei {
     private Integer hid;
 
     private String typename;

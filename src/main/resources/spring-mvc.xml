@@ -26,9 +26,10 @@
 		<!-- 扫描指定的注解 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-    
-    
-    <!-- 引入验证器 -->
+
+    <mvc:annotation-driven validator="validator"></mvc:annotation-driven>
+
+    <!-- 引入转换器 -->
     <mvc:annotation-driven>
     	 <!-- 处理json里的日期数据，默认日期被fastjson转为时间戳数据 -->
   	<mvc:message-converters>  
@@ -46,10 +47,28 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <!-- 配置多语言的资源文件 -->
+    <bean id="hibernateMessages"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="basenames">
+            <list>
+                <value>ValidationMessages</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 如果控制器的类中要使用@Validated修饰，需要如下配置 -->
+    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
+
+    <!-- 配置验证器 -->
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+        <property name="validationMessageSource" ref="hibernateMessages"></property>
+    </bean>
+
     <!-- 将静态资源 交给tomcat默认的servlet进行处理 -->
     <mvc:default-servlet-handler/>
-    
-     <mvc:annotation-driven ></mvc:annotation-driven>
 
     <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

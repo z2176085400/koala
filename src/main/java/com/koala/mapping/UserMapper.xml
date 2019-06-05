@@ -26,6 +26,7 @@
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER})
   </insert>
+
   <insert id="insertSelective" parameterType="com.koala.entity.User">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -57,6 +58,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.koala.entity.User">
     update t_user
     <set>

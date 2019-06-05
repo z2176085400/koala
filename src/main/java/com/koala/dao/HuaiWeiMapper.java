@@ -1,17 +1,17 @@
 package com.koala.dao;
 
-import com.koala.entity.HuaiWei;
+import com.koala.entity.HuaWei;
 
 public interface HuaiWeiMapper {
     int deleteByPrimaryKey(Integer hid);
 
-    int insert(HuaiWei record);
+    int insert(HuaWei record);
 
-    int insertSelective(HuaiWei record);
+    int insertSelective(HuaWei record);
 
-    HuaiWei selectByPrimaryKey(Integer hid);
+    HuaWei selectByPrimaryKey(Integer hid);
 
-    int updateByPrimaryKeySelective(HuaiWei record);
+    int updateByPrimaryKeySelective(HuaWei record);
 
-    int updateByPrimaryKey(HuaiWei record);
+    int updateByPrimaryKey(HuaWei record);
 }
