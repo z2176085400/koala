@@ -18,7 +18,14 @@ public class UserController {
     @RequestMapping(value = "insertUser.do", method = RequestMethod.POST)
     public JsonBean insertUser(User user) {
         user.setStatus(1);
-        userService.insertSelective(user);
-        return JsonBean.success();
+
+        return userService.insertSelective(user);
+    }
+    @CrossOrigin//允许跨域
+    @RequestMapping(value = "login.do", method = RequestMethod.POST)
+    public JsonBean login(User user) {
+
+
+        return userService.login(user.getUsername(),user.getPassword());
     }
 }

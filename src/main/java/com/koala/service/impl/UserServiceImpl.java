@@ -19,4 +19,18 @@ public class UserServiceImpl implements UserService {
 
         return JsonBean.success();
     }
+
+    @Override
+    public JsonBean login(String username, String password) {
+
+        User user = userMapper.findByName(username);
+        if (null == user){
+            return JsonBean.error("账号错误");
+        }
+        if (!user.getPassword().equals(password)){
+            return  JsonBean.error("密码错误");
+        }
+        return JsonBean.success();
+    }
+
 }

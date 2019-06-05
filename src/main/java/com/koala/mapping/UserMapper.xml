@@ -81,4 +81,11 @@
       status = #{status,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+  <select id="findByName" parameterType="string" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+  from t_user
+  where username = #{username}
+</select>
+
 </mapper>
