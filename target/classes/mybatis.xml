@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+	<!-- spring和mybatis整合后，需要指定使用的日志类 -->
+		<setting name="logImpl" value="log4j"/>
+		<!-- 映射时，下划线转驼峰 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.koala.entity.User" alias="user"/>
+		<typeAlias type="com.koala.entity.FatherType" alias="fatherType"/>
+		<typeAlias type="com.koala.entity.Goods" alias="goods"/>
+		<typeAlias type="com.koala.entity.GrandpaType" alias="grandpaType"/>
+		<typeAlias type="com.koala.entity.HuaWei" alias="huawei"/>
+		<typeAlias type="com.koala.entity.SonType" alias="sonType"/>
+	</typeAliases>
+
+	<plugins>
+		<!-- com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 使用下面的方式配置参数，后面会有所有的参数介绍 -->
+			<property name="helperDialect" value="mysql"/>
+		</plugin>
+
+	</plugins>
+
+</configuration>
