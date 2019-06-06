@@ -22,6 +22,180 @@
     <link rel="stylesheet" href="../css/swiper.min.css">
 
     <script src="../js/swiper.min.js"></script>
+    <style type="text/css">
+        * {
+            margin:0;
+            padding:0;
+        }
+        body {
+            font-family:'microsoft yahei';
+            overflow:hidden;
+          /*  background:#fff;*/
+
+        }
+        .w {
+            width:1200px;
+            margin:0 auto;
+        }
+        a {
+            text-decoration:inherit;
+        }
+        a,li {
+            list-style:none;
+        }
+        .cf:before,.cf:after,.clearfix:before,.clearfix:after {
+            content:"";
+            display:table;
+        }
+        .cf:after,.clearfix:after {
+            clear:both;
+        }
+        .cf,.clearfix {
+
+             clear:both;
+             *zoom:1;
+         }
+
+        /*导航条*/
+        #nav {
+            width:100%;
+            min-width:1200px;
+            height:60px;
+
+            margin-top:100px;
+            margin-bottom: 1px;
+
+        }
+        #nav ul li {
+            float:left;
+        }
+        #nav ul li:first-child {
+            margin-left:17%;
+        }
+        #nav ul li a {
+            font-size:16px;
+            color:#0f090a;
+            line-height:30px;
+            padding:0 35px;
+            display:inline-block;
+        }
+        #nav ul li a:hover {
+            font-size:16px;
+
+            color: #ea273d;
+        }
+        #nav ul li.active a {
+            background:#fff000;
+            color:#bbbbbb;
+        }
+        /*banner上面浮层*/
+        .cat_wrap {
+            box-shadow:1px 1px 2px #bbbbbb;
+            box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);
+            background:#FF2A55;
+            width:180px;
+            height: 430px;
+            position:absolute;
+            z-index:999;
+
+            top:-30px;
+        }
+        .cat_wrap .cat_title {
+            width:192px;
+            height:50px;
+            line-height:50px;
+            font-size:16px;
+            background:url(../img/x.png) no-repeat;
+            margin-left:-6px;
+            margin-top:-15px;
+            background-size:100%;
+            color:#fff;
+            text-align:center;
+        }
+        .cat_wrap .cat_header {
+            min-height:450px;
+        }
+        .cat_wrap .cat_list div {
+            background:#fff;
+            border-left:3px solid transparent;
+        }
+        .cat_wrap .cat_list div li {
+            float:left;
+            color: #ffffff;
+            font-size:14px;
+            margin:7px 0px;
+        }
+        .cat_wrap .cat_list div li:first-child {
+            margin-left:15px;
+            margin-right:10px;
+        }
+        .cat_wrap .cat_list {
+            cursor:pointer;
+        }
+        .cat_wrap .cat_list div.active {
+            width:177px;
+            padding-left:1px;
+            position:relative;
+            z-index:999;
+            border-left:3px solid #00a1ea;
+            border-top:1px solid #00a1ea;
+            border-bottom:1px solid #00a1ea;
+            border-right:none;
+        }
+        /*banner浮层滑动显示弹框*/
+        .cat_subcont {
+            display:none;
+        }
+        .cat_subcont.active {
+            display:block;
+        }
+        .cat_subcont:hover {
+
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #ea273d;
+        }
+        .cat_subcont .cat_sublist {
+            position:absolute;
+            z-index:998;
+            top:30px;
+            left:180px;
+            padding-top:5px;
+            min-height:394px;
+            width:740px;
+            background:#fff;
+            border-top:1px solid #f9f9f9;
+            border-left:1px solid #00a1ea;
+            border-bottom:1px solid #00a1ea;
+            border-right:1px solid #00a1ea;
+        }
+        .cat_subcont .cat_sublist .fore1 {
+            width:740px;
+        }
+        .cat_subcont .cat_sublist .fore1 .fore_list {
+            padding:0 20px;
+        }
+        .cat_subcont .cat_sublist .fore1 .fore_list h3 {
+            padding:5px;
+            border-bottom:1px solid #d3d3d3;
+        }
+        .cat_subcont .cat_sublist .fore1 .fore_list h3 a {
+            font-size:14px;
+            color:#00a1ea;
+        }
+        .cat_subcont .cat_sublist .fore1 .fore_list li {
+            float:left;
+            padding:5px;
+        }
+        .cat_subcont .cat_sublist .fore1 .fore_list li a {
+            font-size:12px;
+            color:#333;
+        }
+        .cat_subcont .cat_sublist .fore1 .fore_list li a:hover {
+            color:#FF2A55;
+            text-decoration:underline;
+        }
+
+    </style>
     <style>
         #lunbo {
             position: relative;
@@ -43,7 +217,6 @@
             text-align: center;
             font-size: 18px;
             background: #fff;
-
             /* Center slide text vertically */
             display: -webkit-box;
             display: -ms-flexbox;
@@ -62,199 +235,560 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <!-- top-left未登录 -->
-            <ul id="top-left">
-                <li>考拉欢迎您！</li>
-                <li><a href="reg.html">登录</a></li>
-                <li><a href="reg.html">免费注册</a></li>
-                <li class="img">
-                    <a class="shouji" href="#">手机考拉</a>
-                    <span class="erweima-span"></span>
-                    <img src="../img/top-erweima.png" alt="">
-                </li>
-            </ul>
-            <!-- top-left登录 -->
-            <div id="yidenglu">
-                <span id="delu-span">你好:</span>
-                <i id="user-name"></i>
-                <a href="javascript:;" id="tuichu">退出</a>
-                <a class="shouji" href="#">手机考拉
-                    <span class="erweima-span"></span>
-                    <img src="../img/top-erweima.png" alt="">
-                </a>
-            </div>
-            <!-- top-right -->
-            <div id="topnanv">
-                <div class="defu">
-                    <a href="#" target="_self">每日签到</a>
-                    <a href="#" target="_self">我的订单</a>
-                </div>
-                <div id="anvlfteb">
-                    <div selec="bbs" class="posbox"> <a href="#">个人中心</a> <i></i>
-                        <div id="center_1"></div>
-                    </div>
-                    <div selec="news" class="posbox"><a href="#">客户服务</a> <i></i>
-                        <div id="center_2"></div>
-                    </div>
-                    <div selec="post" class="posbox"><a href="#">充值中心</a> <i></i>
-                        <div id="center_3"></div>
-                    </div>
-                    <div selec="youhui" class="posbox xiaofei"><a href="#">消费者权益</a> <i></i>
-                        <div id="center_4"></div>
-                    </div>
-                    <div selec="other" class="posbox"><a href="#">更多</a> <i></i>
-                        <div id="center_5"></div>
-                    </div>
-                    <div id="seledbox" class="posiabox" style="display: none; left: 1px;">
-                        <div>
-                        </div>
-                    </div>
-                </div>
-        </nav>
-        <div id="top">
-            <div id="docHead">
-                <a href="#" class="logo-t"><img src="../img/logo.png" alt=""></a>
-                <div class="m-searchiptbox">
-                    <div class="sousuo">
-                        <span class="span-fangdajing iconfont icon-index"></span>
-                        <input class="sousuo-ipt" type="text" placeholder="请输入您要查询的商品">
-                        <span class="span-gowu iconfont icon-index"></span>
-                    </div>
-                    <ul class="list">
-                        <li><a href="#" class="teshu1">面膜</a></li>
-                        <li><a href="#">口红</a> </li>
-                        <li><a href="#">减肥</a> </li>
-                        <li><a href="#" class="teshu">全球工厂店</a> </li>
-                        <li><a href="#">运动鞋</a></li>
-                        <li><a href="#">项链</a></li>
-                        <li><a href="#">女包</a></li>
-                    </ul>
-                </div>
-                <div class="add-gouwu">
-                    <a href="#"><span class="iconfont icon-kefu1"></span></a>
-                    <a href="cart.html"><i>购物车</i></a>
-                </div>
-
-            </div>
+<header>
+    <nav>
+        <!-- top-left未登录 -->
+        <ul id="top-left">
+            <li>考拉欢迎您！</li>
+            <li><a href="reg.html">登录</a></li>
+            <li><a href="reg.html">免费注册</a></li>
+            <li class="img">
+                <a class="shouji" href="#">手机考拉</a>
+                <span class="erweima-span"></span>
+                <img src="../img/top-erweima.png" alt="">
+            </li>
+        </ul>
+        <!-- top-left登录 -->
+        <div id="yidenglu">
+            <span id="delu-span">你好:</span>
+            <i id="user-name"></i>
+            <a href="javascript:;" id="tuichu">退出</a>
+            <a class="shouji" href="#">手机考拉
+                <span class="erweima-span"></span>
+                <img src="../img/top-erweima.png" alt="">
+            </a>
         </div>
-    </header>
-    <!-- 所有分类 -->
-    <div class="toplevel">
-        <nav>
-            <div class="toplevel-left">
-                <span>三</span>
-                <span>所有分类</span>
-                <ul>
-                    <li>
-                        <a href=""></a>
-                    </li>
+        <!-- top-right -->
+        <div id="topnanv">
+            <div class="defu">
+                <a href="#" target="_self">每日签到</a>
+                <a href="#" target="_self">我的订单</a>
+            </div>
+            <div id="anvlfteb">
+                <div selec="bbs" class="posbox"> <a href="#">个人中心</a> <i></i>
+                    <div id="center_1"></div>
+                </div>
+                <div selec="news" class="posbox"><a href="#">客户服务</a> <i></i>
+                    <div id="center_2"></div>
+                </div>
+                <div selec="post" class="posbox"><a href="#">充值中心</a> <i></i>
+                    <div id="center_3"></div>
+                </div>
+                <div selec="youhui" class="posbox xiaofei"><a href="#">消费者权益</a> <i></i>
+                    <div id="center_4"></div>
+                </div>
+                <div selec="other" class="posbox"><a href="#">更多</a> <i></i>
+                    <div id="center_5"></div>
+                </div>
+                <div id="seledbox" class="posiabox" style="display: none; left: 1px;">
+                    <div>
+                    </div>
+                </div>
+            </div>
+    </nav>
+    <div id="top">
+        <div id="docHead">
+            <a href="#" class="logo-t"><img src="../img/logo.png" alt=""></a>
+            <div class="m-searchiptbox">
+                <div class="sousuo">
+                    <span class="span-fangdajing iconfont icon-index"></span>
+                    <input class="sousuo-ipt" type="text" placeholder="请输入您要查询的商品">
+                    <span class="span-gowu iconfont icon-index"></span>
+                </div>
+                <ul class="list">
+                    <li><a href="#" class="teshu1">面膜</a></li>
+                    <li><a href="#">口红</a> </li>
+                    <li><a href="#">减肥</a> </li>
+                    <li><a href="#" class="teshu">全球工厂店</a> </li>
+                    <li><a href="#">运动鞋</a></li>
+                    <li><a href="#">项链</a></li>
+                    <li><a href="#">女包</a></li>
                 </ul>
             </div>
-            <ul class="clearfix">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">今日限时购</a></li>
-                <li><a href="#">每日上新</a></li>
-                <li><a href="#">国家馆</a></li>
-                <li><a href="#">海外旗舰店</a></li>
-                <li><a href="#">工厂店</a></li>
-                <li><a href="#">品质奶粉</a></li>
-                <li><a href="#">人气面膜</a></li>
-                <li><a href="#">礼品卡</a></li>
-            </ul>
-        </nav>
-    </div>
-    <!-- 轮播图 -->
-    <div class="swiper-container" dir="rtl">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://haitao.nos.netease.com/51a10ed3-43bd-4429-b6e2-4746a66dd02eT1904091504_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
-            <div class="swiper-slide"><img src="https://haitao.nos.netease.com/a1153d02-8303-4d68-8fad-fd92d86f89ddT1901220955_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
-            <div class="swiper-slide"><img src="https://haitao.nos.netease.com/419785d6-9fe0-49e1-a9c5-992cddc5311aT1904091528_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
-            <div class="swiper-slide"><img src="https://haitao.nos.netease.com/bd616eeb-7ff9-4fa6-aee4-b92615bb35beT1904301120_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
-            <div class="swiper-slide"><img src="https://haitao.nos.netease.com/8c5df13a-7e46-4853-8986-857ece2975bfT1904091500_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
-            <div class="swiper-slide"><img src="https://haitao.nos.netease.com/1948c15c-c9d6-4149-9dd5-a5945ea2c723T1901220956_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
+            <div class="add-gouwu">
+                <a href="#"><span class="iconfont icon-kefu1"></span></a>
+                <a href="cart.html"><i>购物车</i></a>
+            </div>
 
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Navigation -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </div>
-<!--轮播图-->
-   <script>
-    var myPlugin = {
-    name: 'debugger',
-    params: {
-    debugger: false,
-    },
-    on: {
-    init: function () {
-    if (!this.params.debugger) return;
-    console.log('init');
-    },
-    click: function (e) {
-    if (!this.params.debugger) return;
-    console.log('click');
-    },
-    tap: function (e) {
-    if (!this.params.debugger) return;
-    console.log('tap');
-    },
-    doubleTap: function (e) {
-    if (!this.params.debugger) return;
-    console.log('doubleTap');
-    },
-    sliderMove: function (e) {
-    if (!this.params.debugger) return;
-    console.log('sliderMove');
-    },
-    slideChange: function () {
-    if (!this.params.debugger) return;
-    console.log('slideChange', this.previousIndex, '->', this.activeIndex);
-    },
-    slideChangeTransitionStart: function () {
-    if (!this.params.debugger) return;
-    console.log('slideChangeTransitionStart');
-    },
-    slideChangeTransitionEnd: function () {
-    if (!this.params.debugger) return;
-    console.log('slideChangeTransitionEnd');
-    },
-    transitionStart: function () {
-    if (!this.params.debugger) return;
-    console.log('transitionStart');
-    },
-    transitionEnd: function () {
-    if (!this.params.debugger) return;
-    console.log('transitionEnd');
-    },
-    fromEdge: function () {
-    if (!this.params.debugger) return;
-    console.log('fromEdge');
-    },
-    reachBeginning: function () {
-    if (!this.params.debugger) return;
-    console.log('reachBeginning');
-    },
-    reachEnd: function () {
-    if (!this.params.debugger) return;
-    console.log('reachEnd');
-    },
-    },
-    };
-    </script>
+</header>
+<!-- 所有分类 -->
+<!--  <ul class="w">
+        <li class="active"><a href="#">首页</a></li>
 
-    <script>
+        <li><a href="#">今日限时购</a></li>
+        <li><a href="#">每日上新</a></li>
+        <li><a href="#">国家馆</a></li>
+        <li><a href="#">海外旗舰店</a></li>
+        <li><a href="#">工厂店</a></li>
+        <li><a href="#">品质奶粉</a></li>
+    </ul>
+</div> -->
+<div id="nav">
+
+    <ul class="w clearfix">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">今日限时购</a></li>
+        <li><a href="#">每日上新</a></li>
+        <li><a href="#">国家馆</a></li>
+        <li><a href="#">海外旗舰店</a></li>
+        <li><a href="#">工厂店</a></li>
+        <li><a href="#">品质奶粉</a></li>
+
+
+    </ul>
+</div>
+<div class="w clearfix" style="position:relative;">
+    <!-- banner上面浮层 -->
+    <div class="cat_wrap">
+        <div class="cat_header">
+            <h3 class="cat_title">全部分类</h3>
+            <div class="cat_list">
+                <div class="float for1">
+                    <ul class="clearfix">
+                        <li>美容</li>
+                        <li>彩妆</li>
+                    </ul>
+                </div>
+                <div class="float for2">
+                    <ul class="clearfix">
+                        <li>母婴</li>
+                        <li>儿童</li>
+                    </ul>
+                </div>
+                <div class="float for3">
+                    <ul class="clearfix">
+                        <li>营养</li>
+                        <li>保健</li>
+                    </ul>
+                </div>
+                <div class="float for4">
+                    <ul class="clearfix">
+                        <li>数码</li>
+                        <li>家电</li>
+                    </ul>
+                </div>
+                <div class="float for5">
+                    <ul class="clearfix">
+                        <li>个人</li>
+                        <li>洗护</li>
+                    </ul>
+                </div>
+                <div class="float for6">
+                    <ul class="clearfix">
+                        <li>服饰</li>
+                        <li>鞋靴</li>
+                    </ul>
+                </div>
+                <div class="float for7">
+                    <ul class="clearfix">
+                        <li>运动</li>
+                        <li>户外</li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- banner浮层滑动显示弹框 -->
+        <div class="cat_subcont">
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算1</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算1</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算2</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算2</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算2</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算3</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算3</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算4</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算4</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算5</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算6</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算6</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算7</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算8</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算8</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算9</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算9</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算10</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算10</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //banner左侧内容栏
+    $(function(){
+        var thisTime;
+        //鼠标离开左侧内容栏
+        $('.cat_wrap .cat_list .float').mouseleave(function(even){
+            thisTime = setTimeout(thisMouseOut,1000);
+        });
+        //鼠标点击左侧内容栏   滑动出弹层
+        $('.cat_wrap .cat_list .float').mouseenter(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            clearTimeout(thisTime);
+            var thisUB = $('.cat_wrap .cat_list .float').index($(this));
+            if($.trim($('.cat_subcont .cat_sublist').eq(thisUB).html()) != ""){
+                $('.cat_subcont').addClass('active');
+                $('.cat_sublist').hide();
+                $('.cat_sublist').eq(thisUB).show();
+            }else{
+                $('.cat_subcont').removeClass('active');
+            }
+        });
+        //函数——执行鼠标离开左侧内容栏的动作
+        function thisMouseOut(){
+            $('.cat_subcont').removeClass('active');
+            $('.cat_wrap .cat_list .float').removeClass('active');
+        }
+        $('.cat_subcont').mouseenter(function(){
+            clearTimeout(thisTime);
+            $('.cat_subcont').addClass('active');
+        });
+        $('.cat_subcont').mouseleave(function(){
+            $('.cat_subcont').removeClass('active');
+            $('.cat_wrap .cat_list .float').removeClass('active');
+        });
+    });
+</script>
+
+</nav>
+</div>
+<!-- 轮播图 -->
+<div class="swiper-container" dir="rtl">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://haitao.nos.netease.com/51a10ed3-43bd-4429-b6e2-4746a66dd02eT1904091504_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
+        <div class="swiper-slide"><img src="https://haitao.nos.netease.com/a1153d02-8303-4d68-8fad-fd92d86f89ddT1901220955_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
+        <div class="swiper-slide"><img src="https://haitao.nos.netease.com/419785d6-9fe0-49e1-a9c5-992cddc5311aT1904091528_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
+        <div class="swiper-slide"><img src="https://haitao.nos.netease.com/bd616eeb-7ff9-4fa6-aee4-b92615bb35beT1904301120_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
+        <div class="swiper-slide"><img src="https://haitao.nos.netease.com/8c5df13a-7e46-4853-8986-857ece2975bfT1904091500_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
+        <div class="swiper-slide"><img src="https://haitao.nos.netease.com/1948c15c-c9d6-4149-9dd5-a5945ea2c723T1901220956_1920_400.jpg?imageView&thumbnail=3840x0&quality=95&type=webp"></div>
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+<!--轮播图-->
+<script>
+    var myPlugin = {
+        name: 'debugger',
+        params: {
+            debugger: false,
+        },
+        on: {
+            init: function () {
+                if (!this.params.debugger) return;
+                console.log('init');
+            },
+            click: function (e) {
+                if (!this.params.debugger) return;
+                console.log('click');
+            },
+            tap: function (e) {
+                if (!this.params.debugger) return;
+                console.log('tap');
+            },
+            doubleTap: function (e) {
+                if (!this.params.debugger) return;
+                console.log('doubleTap');
+            },
+            sliderMove: function (e) {
+                if (!this.params.debugger) return;
+                console.log('sliderMove');
+            },
+            slideChange: function () {
+                if (!this.params.debugger) return;
+                console.log('slideChange', this.previousIndex, '->', this.activeIndex);
+            },
+            slideChangeTransitionStart: function () {
+                if (!this.params.debugger) return;
+                console.log('slideChangeTransitionStart');
+            },
+            slideChangeTransitionEnd: function () {
+                if (!this.params.debugger) return;
+                console.log('slideChangeTransitionEnd');
+            },
+            transitionStart: function () {
+                if (!this.params.debugger) return;
+                console.log('transitionStart');
+            },
+            transitionEnd: function () {
+                if (!this.params.debugger) return;
+                console.log('transitionEnd');
+            },
+            fromEdge: function () {
+                if (!this.params.debugger) return;
+                console.log('fromEdge');
+            },
+            reachBeginning: function () {
+                if (!this.params.debugger) return;
+                console.log('reachBeginning');
+            },
+            reachEnd: function () {
+                if (!this.params.debugger) return;
+                console.log('reachEnd');
+            },
+        },
+    };
+</script>
+
+<script>
     // Install Plugin To Swiper
     Swiper.use(myPlugin);
-
     // Init Swiper
     var swiper = new Swiper('.swiper-container', {
-
-
-
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -265,1113 +799,1112 @@
         },
         // Enable debugger
         debugger: true,
-
-    loop:true,
-    autoplayDisableOnInteraction:false, autoplay:1000,
-    paginationClickable:true,
-    prevButton:".swiper-button-prev",
-    nextButton:".swiper-button-next",
-    effect:"flip"
+        loop:true,
+        autoplayDisableOnInteraction:false, autoplay:1000,
+        paginationClickable:true,
+        prevButton:".swiper-button-prev",
+        nextButton:".swiper-button-next",
+        effect:"flip"
     });
-    </script>
+</script>
 
-    <!-- 优惠区 -->
-    <figure>
-        <div class="imgwrap">
-            <div class="imgwrap-top">
-                <h2>新人专享</h2>
-                <ul>
-                    <li><a href="#"><img class="teshu" src="../img/youhui/1_03.png" alt=""></a></li>
-                    <li><a href="#"><img src="../img/youhui/2_03.png" alt=""></a></li>
-                    <li><a href="#"><img src="../img/youhui/2_05.png" alt=""></a></li>
-                    <li><a href="#"><img src="../img/youhui/2_07.png" alt=""></a></li>
-                </ul>
-            </div>
-            <div class="imgwrap-bottom">
-                <h2>不限新老区</h2>
-                <ul>
-                    <li><a href="#"><img src="../img/youhui/2_15.png" alt=""></a></li>
-                    <li><a href="#"><img src="../img/youhui/2_17.png" alt=""></a></li>
-                    <li><a href="#"><img src="../img/youhui/2_19.png" alt=""></a></li>
-                    <li><a href="#"><img src="../img/youhui/2_21.png" alt=""></a></li>
-                    <li><a href="#"><img src="../img/youhui/2_21.png" alt=""></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- 椭圆图 -->
-        <div class="hotarea">
-            <a href="#"></a>
-        </div>
-        <script src="../jq/index.js"></script>
-        <!-- 四张图片 -->
-        <div class="m-zoneimage">
-            <a href="#"><img src="../img/sizhang/3_07.png" alt=""></a>
-            <a href="#"><img src="../img/sizhang/3_09.png" alt=""></a>
-            <a href="#"><img src="../img/sizhang/3_11.png" alt=""></a>
-            <a href="#"><img src="../img/sizhang/3_13.png" alt=""></a>
-        </div>
-    </figure>
-    <article>
-        <div class="m-fenceTitle">★口碑爆款★
-        </div>
-        <div class="goods-list">
-            <ul class="list-top list-baokuang">
-                <!-- <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p>唤醒年轻新肌肤</p>
-                    <i><a href="#">新人价&nbsp;￥</a></i>
-                    <span>98</span>
-                    <b>立即购买</b>
-                </li> -->
-                <!--              <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p>唤醒年轻新肌肤</p>
-                    <i><a href="#">新人价&nbsp;￥</a></i>
-                    <span>98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/5.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/7.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/8.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-            </ul>-->
-        </div>
-        <!-- 99元任选2件 -->
-        <div class="m-fenceTitle">99元任选2件
-        </div>
-        <div class="goods-list-tow">
-            <ul class="list-top-tow list-jiujiu">
-                <!--  <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-ti tle"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li> -->
-                <!--              <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li> -->
-            </ul>
-        </div>
-        <!-- 大牌满减 -->
-        <div class="m-fenceTitle">大牌满减
-        </div>
-        <div class="goods-list-tow">
-            <ul class="list-top-tow list-dapai">
-                <!-- <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>-->
-            </ul>
-        </div>
-        <!-- 美容彩妆 -->
-        <div class="m-fenceTitle">美容彩妆
-        </div>
-        <div class="goods-list">
-            <ul class="list-top list-meirong">
-                <!-- <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/5.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/7.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/8.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
- -->
-            </ul>
-        </div>
-        <!-- 家居个护 -->
-        <div class="m-fenceTitle"> 家居个护
-        </div>
-        <div class="goods-list list-jiaju-div">
-            <ul class="list-top list-jiaju">
-                <!--  <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/5.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/7.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/8.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li> -->
-            </ul>
-        </div>
-        <!-- 母婴儿童 -->
-        <div class="m-fenceTitle"> 母婴儿童
-        </div>
-        <div class="goods-list">
-            <ul class="list-top list-muying">
-                <!-- <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/5.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/7.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/8.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li> -->
-            </ul>
-        </div>
-        <!-- 美食保健 -->
-        <div class="m-fenceTitle">美食保健
-        </div>
-        <div class="goods-list-tow">
-            <ul class="list-top-tow list-baojian">
-                <!--  <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
- -->
-            </ul>
-        </div>
-        <!-- 工厂店精选 -->
-        <div class="m-fenceTitle">工厂店精选
-        </div>
-        <div class="goods-list-tow">
-            <ul class="list-top-tow list-gongchang">
-                <!-- <li>
-                    <img src="../img/chanpinzhanshi/2.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/3.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/4.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/11.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/12.jpg" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/13.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/6.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
-                <li>
-                    <img src="../img/chanpinzhanshi/10.webp" alt="">
-                    <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
-                    <p><a href="#">唤醒年轻新肌肤</a></p>
-                    <i><a href="#">新人价</a></i>
-                    <span>￥98</span>
-                    <b>立即购买</b>
-                </li>
- -->
-            </ul>
-        </div>
-        <div class="hotarea-hotarea">
-            <a href="#">
-                <img src="../img/shuoming/kaola.png" alt="">
-            </a>
-        </div>
-    </article>
-    <aside>
-        <div id="btmlist">
-            <ul class="clearfix-clearfix">
-                <li>
-                    <div class="btmIcon">正</div>
-                    <strong class="tit">正品承诺</strong>
-                    <span class="desc">正品保障 假一赔十</span>
-                </li>
-                <li>
-                    <div class="btmIcon">低</div>
-                    <strong class="tit">低价保障</strong>
-                    <span class="desc">缩减中间环节 确保低价</span>
-                </li>
-                <li>
-                    <div class="btmIcon">退</div>
-                    <strong class="tit">30天无忧退货</strong>
-                    <span class="desc">国内退货 售后无忧</span>
-                </li>
-                <li>
-                    <div class="btmIcon">邮</div>
-                    <strong class="tit">满88包邮</strong>
-                    <span class="desc">部分特殊商品除外</span>
-                </li>
-            </ul>
-        </div>
-        <div id="aside_guideList">
-            <ul class="aside_guideList_ul">
-                <li>
-                    <a href="//www.kaola.com/" class="logokaola" title="网易考拉"></a>
-                    <div>
-                        <span style="font-size: 12px">关注我们</span>
-                        <a href="#">
-                            <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
-                        </a>
-                        <a href="#">
-                            <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
-                        </a>
-                        <a href="#">
-                            <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
-                        </a>
-                    </div>
-                </li>
-                <li class="fuwu">
-                    <dl>
-                        <dt><strong>考拉保障</strong></dt>
-                        <dd><a href="#">假一赔十</a></dd>
-                        <dd><a href="#">廉正监督</a></dd>
-                    </dl>
-                </li>
-                <li class="fuwu">
-                    <dl>
-                        <dt><strong>新手指南</strong></dt>
-                        <dd><a href="#">购物流程</a></dd>
-                        <dd><a href="#">支付方式</a></dd>
-                        <dd><a href="#">通关税费</a></dd>
-                        <dd><a href="#">常见问题</a></dd>
-                    </dl>
-                </li>
-                <li class="fuwu">
-                    <dl>
-                        <dt><strong>售后服务</strong></dt>
-                        <dd><a href="#">退货政策</a></dd>
-                        <dd><a href="#">退货流程</a></dd>
-                        <dd><a href="#">退款说明</a></dd>
-                        <dd><a href="#">联系客服</a></dd>
-                    </dl>
-                </li>
-                <li class="fuwu">
-                    <dl>
-                        <dt><strong>物流配送</strong></dt>
-                        <dd><a href="#">配送方式</a></dd>
-                        <dd><a href="#">配送服务</a></dd>
-                        <dd><a href="#">运费标准</a></dd>
-                        <dd><a href="#">物流跟踪</a></dd>
-                    </dl>
-                </li>
-                <li class="fuwu">
-                    <dl>
-                        <dt><strong> 关于我们</strong></dt>
-                        <dd><a href="#">联系我们</a></dd>
-                        <dd><a href="#">招商合作</a></dd>
-                        <dd><a href="#">销售联盟</a></dd>
-                        <dd><a href="#">CEO邮箱</a></dd>
-                    </dl>
-                </li>
-                <li class="fuwu">
-                    <img class="fuwu-img" src="../img/top-erweima.png" alt="">
-                    <span class="fuwu-span">扫描下载手机版</span>
-                </li>
-            </ul>
-        </div>
-        <!-- 侧表面栏-->
-        <div id="cebianlan">
+<!-- 优惠区 -->
+<figure>
+    <div class="imgwrap">
+        <div class="imgwrap-top">
+            <h2>新人专享</h2>
             <ul>
-                <li>
-                    <a href="#">
-                        <span></span>
-                        <span>购物车</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        优惠券
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        ★☆口碑爆款
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        99元任选2件
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        大牌满减
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        美容彩妆
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        家居个护
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        母婴儿童
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        9美食保健
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        工厂店精选
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <b></b>
-                        top
-                    </a>
-                </li>
+                <li><a href="#"><img class="teshu" src="../img/youhui/1_03.png" alt=""></a></li>
+                <li><a href="#"><img src="../img/youhui/2_03.png" alt=""></a></li>
+                <li><a href="#"><img src="../img/youhui/2_05.png" alt=""></a></li>
+                <li><a href="#"><img src="../img/youhui/2_07.png" alt=""></a></li>
             </ul>
         </div>
-        <!-- 底部 -->
-        <footer>
-            <div id="aboutNEST">
-                <div id="footer-top">
-                    <a href="#">About NetEase</a>
-                    -
-                    <a href="#">公司简介</a>
-                    -
-                    <a href="#">联系方法</a>
-                    -
-                    <a href="#">友情链接</a>
-                    -
-                    <a href="#">招聘信息</a>
-                    -
-                    <a href="#">客户服务</a>
-                    -
-                    <a href="#">隐私政策</a>
-                    -
-                    <a href="#">网络营销</a>
-                    -
-                    <a href="#">网易考拉 </a>
+        <div class="imgwrap-bottom">
+            <h2>不限新老区</h2>
+            <ul>
+                <li><a href="#"><img src="../img/youhui/2_15.png" alt=""></a></li>
+                <li><a href="#"><img src="../img/youhui/2_17.png" alt=""></a></li>
+                <li><a href="#"><img src="../img/youhui/2_19.png" alt=""></a></li>
+                <li><a href="#"><img src="../img/youhui/2_21.png" alt=""></a></li>
+                <li><a href="#"><img src="../img/youhui/2_21.png" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 椭圆图 -->
+    <div class="hotarea">
+        <a href="#"></a>
+    </div>
+    <script src="../jq/index.js"></script>
+    <!-- 四张图片 -->
+    <div class="m-zoneimage">
+        <a href="#"><img src="../img/sizhang/3_07.png" alt=""></a>
+        <a href="#"><img src="../img/sizhang/3_09.png" alt=""></a>
+        <a href="#"><img src="../img/sizhang/3_11.png" alt=""></a>
+        <a href="#"><img src="../img/sizhang/3_13.png" alt=""></a>
+    </div>
+</figure>
+<article>
+    <div class="m-fenceTitle">★口碑爆款★
+    </div>
+    <div class="goods-list">
+        <ul class="list-top list-baokuang">
+            <!-- <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p>唤醒年轻新肌肤</p>
+                <i><a href="#">新人价&nbsp;￥</a></i>
+                <span>98</span>
+                <b>立即购买</b>
+            </li> -->
+            <!--              <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p>唤醒年轻新肌肤</p>
+                <i><a href="#">新人价&nbsp;￥</a></i>
+                <span>98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/5.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/7.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/8.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+        </ul>-->
+    </div>
+    <!-- 99元任选2件 -->
+    <div class="m-fenceTitle">99元任选2件
+    </div>
+    <div class="goods-list-tow">
+        <ul class="list-top-tow list-jiujiu">
+            <!--  <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-ti tle"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li> -->
+            <!--              <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li> -->
+        </ul>
+    </div>
+    <!-- 大牌满减 -->
+    <div class="m-fenceTitle">大牌满减
+    </div>
+    <div class="goods-list-tow">
+        <ul class="list-top-tow list-dapai">
+            <!-- <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>-->
+        </ul>
+    </div>
+    <!-- 美容彩妆 -->
+    <div class="m-fenceTitle">美容彩妆
+    </div>
+    <div class="goods-list">
+        <ul class="list-top list-meirong">
+            <!-- <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/5.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/7.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/8.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+-->
+        </ul>
+    </div>
+    <!-- 家居个护 -->
+    <div class="m-fenceTitle"> 家居个护
+    </div>
+    <div class="goods-list list-jiaju-div">
+        <ul class="list-top list-jiaju">
+            <!--  <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/5.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/7.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/8.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li> -->
+        </ul>
+    </div>
+    <!-- 母婴儿童 -->
+    <div class="m-fenceTitle"> 母婴儿童
+    </div>
+    <div class="goods-list">
+        <ul class="list-top list-muying">
+            <!-- <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/5.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/7.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/8.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li> -->
+        </ul>
+    </div>
+    <!-- 美食保健 -->
+    <div class="m-fenceTitle">美食保健
+    </div>
+    <div class="goods-list-tow">
+        <ul class="list-top-tow list-baojian">
+            <!--  <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+-->
+        </ul>
+    </div>
+    <!-- 工厂店精选 -->
+    <div class="m-fenceTitle">工厂店精选
+    </div>
+    <div class="goods-list-tow">
+        <ul class="list-top-tow list-gongchang">
+            <!-- <li>
+                <img src="../img/chanpinzhanshi/2.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/3.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/4.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/11.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/12.jpg" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/13.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <a href=""><img src="../img/chanpinzhanshi/2.webp" alt=""></a>
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/6.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+            <li>
+                <img src="../img/chanpinzhanshi/10.webp" alt="">
+                <h3 class="goods-title"><a href="#">【新人专享】【网易自营 品牌授权】妆蕾 RAY 蚕丝面膜 金色10片+银色10片 共20片.net防伪查验</a></h3>
+                <p><a href="#">唤醒年轻新肌肤</a></p>
+                <i><a href="#">新人价</a></i>
+                <span>￥98</span>
+                <b>立即购买</b>
+            </li>
+-->
+        </ul>
+    </div>
+    <div class="hotarea-hotarea">
+        <a href="#">
+            <img src="../img/shuoming/kaola.png" alt="">
+        </a>
+    </div>
+</article>
+<aside>
+    <div id="btmlist">
+        <ul class="clearfix-clearfix">
+            <li>
+                <div class="btmIcon">正</div>
+                <strong class="tit">正品承诺</strong>
+                <span class="desc">正品保障 假一赔十</span>
+            </li>
+            <li>
+                <div class="btmIcon">低</div>
+                <strong class="tit">低价保障</strong>
+                <span class="desc">缩减中间环节 确保低价</span>
+            </li>
+            <li>
+                <div class="btmIcon">退</div>
+                <strong class="tit">30天无忧退货</strong>
+                <span class="desc">国内退货 售后无忧</span>
+            </li>
+            <li>
+                <div class="btmIcon">邮</div>
+                <strong class="tit">满88包邮</strong>
+                <span class="desc">部分特殊商品除外</span>
+            </li>
+        </ul>
+    </div>
+    <div id="aside_guideList">
+        <ul class="aside_guideList_ul">
+            <li>
+                <a href="//www.kaola.com/" class="logokaola" title="网易考拉"></a>
+                <div>
+                    <span style="font-size: 12px">关注我们</span>
+                    <a href="#">
+                        <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
+                    </a>
+                    <a href="#">
+                        <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
+                    </a>
+                    <a href="#">
+                        <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
+                    </a>
                 </div>
-                <div id="footer-center">
-                    <span>网络文化经营许可证：浙网文[2019]1372-138号&nbsp;&nbsp;&nbsp; </span>
-                    <span> 增值电信业务经营许可证：浙B2-20160288&nbsp;&nbsp;&nbsp;</span>
-                    <a href="#">自营经营者信息&nbsp;&nbsp;</a>
-                    <span>（浙）网械平台备字[2018]第00007号 </span>
-                </div>
-                <div id="footer-bottom">
-                    <a href="#"><img src="../img/footer/footer-1.png" alt=""></a>
-                    <a href="#">浙公网安备 33010802002216号&nbsp;&nbsp;</a>
-                    <a href="#">&nbsp;网易公司版权所有©1997-2019&nbsp;&nbsp;</a>
-                    <a href="#">互联网药品信息服务资格证书编号（浙）-2017-0027&nbsp;&nbsp;</a>
-                    <a href="#">浙ICP备16011229号-6</a>
-                </div>
-                <div id="footer-img">
-                    <a href="#"><img src="../img/footer/footer-2.png" alt=""></a>
-                    <a href="#"><img src="../img/footer/footer-3.png" alt=""></a>
-                    <a href="#"><img class="xuke" src="../img/footer/footer-4.gif" alt=""></a>
-                </div>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>考拉保障</strong></dt>
+                    <dd><a href="#">假一赔十</a></dd>
+                    <dd><a href="#">廉正监督</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>新手指南</strong></dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">支付方式</a></dd>
+                    <dd><a href="#">通关税费</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>售后服务</strong></dt>
+                    <dd><a href="#">退货政策</a></dd>
+                    <dd><a href="#">退货流程</a></dd>
+                    <dd><a href="#">退款说明</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>物流配送</strong></dt>
+                    <dd><a href="#">配送方式</a></dd>
+                    <dd><a href="#">配送服务</a></dd>
+                    <dd><a href="#">运费标准</a></dd>
+                    <dd><a href="#">物流跟踪</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong> 关于我们</strong></dt>
+                    <dd><a href="#">联系我们</a></dd>
+                    <dd><a href="#">招商合作</a></dd>
+                    <dd><a href="#">销售联盟</a></dd>
+                    <dd><a href="#">CEO邮箱</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <img class="fuwu-img" src="../img/top-erweima.png" alt="">
+                <span class="fuwu-span">扫描下载手机版</span>
+            </li>
+        </ul>
+    </div>
+    <!-- 侧表面栏-->
+    <div id="cebianlan">
+        <ul>
+            <li>
+                <a href="#">
+                    <span></span>
+                    <span>购物车</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    优惠券
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    ★☆口碑爆款
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    99元任选2件
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    大牌满减
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    美容彩妆
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    家居个护
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    母婴儿童
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    9美食保健
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    工厂店精选
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <b></b>
+                    top
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 底部 -->
+    <footer>
+        <div id="aboutNEST">
+            <div id="footer-top">
+                <a href="#">About NetEase</a>
+                -
+                <a href="#">公司简介</a>
+                -
+                <a href="#">联系方法</a>
+                -
+                <a href="#">友情链接</a>
+                -
+                <a href="#">招聘信息</a>
+                -
+                <a href="#">客户服务</a>
+                -
+                <a href="#">隐私政策</a>
+                -
+                <a href="#">网络营销</a>
+                -
+                <a href="#">网易考拉 </a>
             </div>
-        </footer>
-    </aside>
+            <div id="footer-center">
+                <span>网络文化经营许可证：浙网文[2019]1372-138号&nbsp;&nbsp;&nbsp; </span>
+                <span> 增值电信业务经营许可证：浙B2-20160288&nbsp;&nbsp;&nbsp;</span>
+                <a href="#">自营经营者信息&nbsp;&nbsp;</a>
+                <span>（浙）网械平台备字[2018]第00007号 </span>
+            </div>
+            <div id="footer-bottom">
+                <a href="#"><img src="../img/footer/footer-1.png" alt=""></a>
+                <a href="#">浙公网安备 33010802002216号&nbsp;&nbsp;</a>
+                <a href="#">&nbsp;网易公司版权所有©1997-2019&nbsp;&nbsp;</a>
+                <a href="#">互联网药品信息服务资格证书编号（浙）-2017-0027&nbsp;&nbsp;</a>
+                <a href="#">浙ICP备16011229号-6</a>
+            </div>
+            <div id="footer-img">
+                <a href="#"><img src="../img/footer/footer-2.png" alt=""></a>
+                <a href="#"><img src="../img/footer/footer-3.png" alt=""></a>
+                <a href="#"><img class="xuke" src="../img/footer/footer-4.gif" alt=""></a>
+            </div>
+        </div>
+    </footer>
+</aside>
 </body>
 
 </html>
