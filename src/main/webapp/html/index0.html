@@ -56,11 +56,10 @@
         /*导航条*/
         #nav {
             width:100%;
+            min-width:1200px;
             height:60px;
-            margin-top:110px;
+            margin-top:100px;
             margin-bottom: 1px;
-            vertical-align: middle;
-            padding-left: 24px;
         }
         #nav ul li {
             float:left;
@@ -72,7 +71,7 @@
             font-size:16px;
             color:#0f090a;
             line-height:30px;
-            padding:0 30px;
+            padding:0 35px;
             display:inline-block;
         }
         #nav ul li a:hover {
@@ -85,17 +84,17 @@
         }
         /*banner上面浮层*/
         .cat_wrap {
-            /*box-shadow:1px 1px 2px #bbbbbb;*/
-            /*box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);*/
-            /*background:#FF2A55;*/
+            box-shadow:1px 1px 2px #bbbbbb;
+            box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);
+            background:#FF2A55;
             width:180px;
             height: 430px;
             position:absolute;
-            z-index:9;
-            top:-50px;
+            z-index:999;
+            top:-30px;
         }
         .cat_wrap .cat_title {
-            width:193px;
+            width:192px;
             height:50px;
             line-height:50px;
             font-size:16px;
@@ -105,40 +104,10 @@
             background-size:100%;
             color:#fff;
             text-align:center;
-            position: relative;
-            z-index: 10;
         }
         .cat_wrap .cat_header {
-            display: none;
-            margin-top: -10px;
-            min-height:425px;
-            box-shadow:1px 1px 2px #bbbbbb;
-            box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);
-            background:#FF2A55;
-            position: relative;
-            z-index: 9;
+            min-height:450px;
         }
-        .cat_wrap .cat_header_active {
-            display: block;
-            margin-top: -10px;
-            min-height:425px;
-            box-shadow:1px 1px 2px #bbbbbb;
-            box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);
-            background:#FF2A55;
-            position: relative;
-            z-index: 9;
-        }
-        /*.cat_title:hover ~ .cat_header{
-            display:block;
-        }
-        .cat_header:hover{
-            display:block;
-        }
-        .cat_subcont:hover ~ .cat_header{
-            display:block;
-        }*/
-
-
         .cat_wrap .cat_list div {
             background:#fff;
             border-left:3px solid transparent;
@@ -160,7 +129,7 @@
             width:177px;
             padding-left:1px;
             position:relative;
-            z-index:9;
+            z-index:999;
             border-left:3px solid #00a1ea;
             border-top:1px solid #00a1ea;
             border-bottom:1px solid #00a1ea;
@@ -169,7 +138,6 @@
         /*banner浮层滑动显示弹框*/
         .cat_subcont {
             display:none;
-            min-width: 500px;
         }
         .cat_subcont.active {
             display:block;
@@ -180,7 +148,7 @@
         }
         .cat_subcont .cat_sublist {
             position:absolute;
-            z-index:10;
+            z-index:998;
             top:30px;
             left:180px;
             padding-top:5px;
@@ -197,7 +165,6 @@
         }
         .cat_subcont .cat_sublist .fore1 .fore_list {
             padding:0 20px;
-            min-height: 80px;
         }
         .cat_subcont .cat_sublist .fore1 .fore_list h3 {
             padding:5px;
@@ -338,246 +305,395 @@
         </div>
     </div>
 </header>
-<div id="search_float_div" style="position:fixed;width:100%;top: 0px;background: #eee;z-index: 999;height: 51px;display: none">
-    <div id="docHead" style="margin-top: 5px;">
-        <div style="float: left;"><a href="#"><img src="../img/logo-min.png" alt="" width="162" height="40"></a></div>
-        <div class="m-searchiptbox" style="float: left;margin-top: 5px;margin-left: 200px;">
-            <div class="sousuo" style="margin-top: -5px;">
-                <span class="span-fangdajing iconfont icon-index"></span>
-                <input class="sousuo-ipt" type="text" placeholder="请输入您要查询的商品">
-                <span class="span-gowu iconfont icon-index"></span>
+<!-- 所有分类 -->
+<!--  <ul class="w">
+        <li class="active"><a href="#">首页</a></li>
+        <li><a href="#">今日限时购</a></li>
+        <li><a href="#">每日上新</a></li>
+        <li><a href="#">国家馆</a></li>
+        <li><a href="#">海外旗舰店</a></li>
+        <li><a href="#">工厂店</a></li>
+        <li><a href="#">品质奶粉</a></li>
+    </ul>
+</div> -->
+<div id="nav">
+
+    <ul class="w clearfix">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">今日限时购</a></li>
+        <li><a href="#">每日上新</a></li>
+        <li><a href="#">国家馆</a></li>
+        <li><a href="#">海外旗舰店</a></li>
+        <li><a href="#">工厂店</a></li>
+        <li><a href="#">品质奶粉</a></li>
+
+
+    </ul>
+</div>
+<div class="w clearfix" style="position:relative;">
+    <!-- banner上面浮层 -->
+    <div class="cat_wrap">
+        <div class="cat_header">
+            <h3 class="cat_title">全部分类</h3>
+            <div class="cat_list">
+                <div class="float for1">
+                    <ul class="clearfix">
+                        <li>美容</li>
+                        <li>彩妆</li>
+                    </ul>
+                </div>
+                <div class="float for2">
+                    <ul class="clearfix">
+                        <li>母婴</li>
+                        <li>儿童</li>
+                    </ul>
+                </div>
+                <div class="float for3">
+                    <ul class="clearfix">
+                        <li>营养</li>
+                        <li>保健</li>
+                    </ul>
+                </div>
+                <div class="float for4">
+                    <ul class="clearfix">
+                        <li>数码</li>
+                        <li>家电</li>
+                    </ul>
+                </div>
+                <div class="float for5">
+                    <ul class="clearfix">
+                        <li>个人</li>
+                        <li>洗护</li>
+                    </ul>
+                </div>
+                <div class="float for6">
+                    <ul class="clearfix">
+                        <li>服饰</li>
+                        <li>鞋靴</li>
+                    </ul>
+                </div>
+                <div class="float for7">
+                    <ul class="clearfix">
+                        <li>运动</li>
+                        <li>户外</li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- banner浮层滑动显示弹框 -->
+        <div class="cat_subcont">
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算1</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算1</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算2</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算2</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算2</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算3</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算3</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算4</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算4</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算5</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算6</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算6</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算7</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算8</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算8</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算9</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算9</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cat_sublist">
+                <!-- 浮层左边列表 -->
+                <div class="fore1">
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算10</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                    <div class="fore_list">
+                        <h3><a href="javascript:void(0);">云计算10</a></h3>
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云平台》</a></li>
+                            <li><a href="javascript:void(0);">《大数据》</a></li>
+                            <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                            <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
 
-<!-- 所有分类 -->
-<div>
-    <nav style="width: 1090px;margin:0 auto;">
-        <div id="nav">
-            <ul>
-                <li><a href="#">首页</a></li>
-                <li><a href="#">今日限时购</a></li>
-                <li><a href="#">每日上新</a></li>
-                <li><a href="#">国家馆</a></li>
-                <li><a href="#">海外旗舰店</a></li>
-                <li><a href="#">工厂店</a></li>
-                <li><a href="#">品质奶粉</a></li>
-            </ul>
-        </div>
-        <div style="position:relative;">
-            <!-- banner上面浮层 -->
-            <div class="cat_wrap">
-                <h3 class="cat_title">全部分类</h3>
-                <div id="cat_wrap_cat_header" class="cat_header">
-                    <div class="cat_list">
-                        <div class="float for1">
-                            <ul class="clearfix">
-                                <li>美容</li>
-                                <li>彩妆</li>
-                            </ul>
-                        </div>
-                        <div class="float for2">
-                            <ul class="clearfix">
-                                <li>母婴</li>
-                                <li>儿童</li>
-                            </ul>
-                        </div>
-                        <div class="float for3">
-                            <ul class="clearfix">
-                                <li>营养</li>
-                                <li>保健</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- banner浮层滑动显示弹框 -->
-                <div class="cat_subcont">
-                    <div class="cat_sublist">
-                        <!-- 浮层左边列表 -->
-                        <div class="fore1">
-                            <div class="fore_list">
-                                <h3><a href="javascript:void(0);">云计算1</a></h3>
-                                <ul class="clearfix">
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云平台》</a></li>
-                                    <li><a href="javascript:void(0);">《大数据》</a></li>
-                                    <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                </ul>
-                            </div>
-                            <div class="fore_list">
-                                <h3><a href="javascript:void(0);">云计算1</a></h3>
-                                <ul class="clearfix">
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云平台》</a></li>
-                                    <li><a href="javascript:void(0);">《大数据》</a></li>
-                                    <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                </ul>
-                            </div>
-                        </div>
+<script type="text/javascript">
+    //banner左侧内容栏
+    $(function(){
+        var thisTime;
+        //鼠标离开左侧内容栏
+        $('.cat_wrap .cat_list .float').mouseleave(function(even){
+            thisTime = setTimeout(thisMouseOut,1000);
+        });
+        //鼠标点击左侧内容栏   滑动出弹层
+        $('.cat_wrap .cat_list .float').mouseenter(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            clearTimeout(thisTime);
+            var thisUB = $('.cat_wrap .cat_list .float').index($(this));
+            if($.trim($('.cat_subcont .cat_sublist').eq(thisUB).html()) != ""){
+                $('.cat_subcont').addClass('active');
+                $('.cat_sublist').hide();
+                $('.cat_sublist').eq(thisUB).show();
+            }else{
+                $('.cat_subcont').removeClass('active');
+            }
+        });
+        //函数——执行鼠标离开左侧内容栏的动作
+        function thisMouseOut(){
+            $('.cat_subcont').removeClass('active');
+            $('.cat_wrap .cat_list .float').removeClass('active');
+        }
+        $('.cat_subcont').mouseenter(function(){
+            clearTimeout(thisTime);
+            $('.cat_subcont').addClass('active');
+        });
+        $('.cat_subcont').mouseleave(function(){
+            $('.cat_subcont').removeClass('active');
+            $('.cat_wrap .cat_list .float').removeClass('active');
+        });
+    });
+</script>
 
-                    </div>
-                    <div class="cat_sublist">
-                        <!-- 浮层左边列表 -->
-                        <div class="fore1">
-                            <div class="fore_list">
-                                <h3><a href="javascript:void(0);">云计算2</a></h3>
-                                <ul class="clearfix">
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云平台》</a></li>
-                                    <li><a href="javascript:void(0);">《大数据》</a></li>
-                                    <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                </ul>
-                            </div>
-                            <div class="fore_list">
-                                <h3><a href="javascript:void(0);">云计算2</a></h3>
-                                <ul class="clearfix">
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云平台》</a></li>
-                                    <li><a href="javascript:void(0);">《大数据》</a></li>
-                                    <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                </ul>
-                            </div>
-                            <div class="fore_list">
-                                <h3><a href="javascript:void(0);">云计算2</a></h3>
-                                <ul class="clearfix">
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云平台》</a></li>
-                                    <li><a href="javascript:void(0);">《大数据》</a></li>
-                                    <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cat_sublist">
-                        <!-- 浮层左边列表 -->
-                        <div class="fore1">
-                            <div class="fore_list">
-                                <h3><a href="javascript:void(0);">云计算3</a></h3>
-                                <ul class="clearfix">
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云平台》</a></li>
-                                    <li><a href="javascript:void(0);">《大数据》</a></li>
-                                    <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                </ul>
-                            </div>
-                            <div class="fore_list">
-                                <h3><a href="javascript:void(0);">云计算3</a></h3>
-                                <ul class="clearfix">
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云平台》</a></li>
-                                    <li><a href="javascript:void(0);">《大数据》</a></li>
-                                    <li><a href="javascript:void(0);">《虚拟化技术》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                    <li><a href="javascript:void(0);">《云计算基础架构》</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script type="text/javascript">
-            //banner左侧内容栏
-            $(function(){
-                //显示左边daohang
-                $('.cat_title').mouseenter(function(){
-                    $("#cat_wrap_cat_header").attr("class","cat_header_active");
-                });
-                $('.cat_title').mouseleave(function(){
-                    $("#cat_wrap_cat_header").attr("class","cat_header");
-                });
-                var cat_wrap_cat_header_TIME;
-                $('#cat_wrap_cat_header').mouseenter(function(){
-                    $("#cat_wrap_cat_header").attr("class","cat_header_active");
-                });
-                $('#cat_wrap_cat_header').mouseleave(function(){
-                    clearInterval(cat_wrap_cat_header_TIME);
-                    cat_wrap_cat_header_TIME=setTimeout(function(){
-                        var flag= $("#cat_wrap_cat_header").attr("data-inSubContent");
-                        if(flag==undefined||flag==null){
-                            $("#cat_wrap_cat_header").attr("class","cat_header");
-                        }
-                    },500);
-                });
-
-                var thisTime;
-                //鼠标离开左侧内容栏
-                $('.cat_wrap .cat_list .float').mouseleave(function(even){
-                    thisTime = setTimeout(thisMouseOut,500);
-                });
-                //鼠标点击左侧内容栏   滑动出弹层
-                $('.cat_wrap .cat_list .float').mouseenter(function(){
-                    $(this).addClass("active").siblings().removeClass("active");
-                    clearTimeout(thisTime);
-                    var thisUB = $('.cat_wrap .cat_list .float').index($(this));
-                    if($.trim($('.cat_subcont .cat_sublist').eq(thisUB).html()) != ""){
-                        $('.cat_subcont').addClass('active');
-                        $('.cat_sublist').hide();
-                        $('.cat_sublist').eq(thisUB).show();
-                    }else{
-                        $('.cat_subcont').removeClass('active');
-                    }
-                });
-                //函数——执行鼠标离开左侧内容栏的动作
-                function thisMouseOut(){
-                    $('.cat_subcont').removeClass('active');
-                    $('.cat_wrap .cat_list .float').removeClass('active');
-                }
-                $('.cat_subcont').mouseenter(function(){
-                    clearTimeout(thisTime);
-                    $('.cat_subcont').addClass('active');
-                    $("#cat_wrap_cat_header").attr("data-inSubContent",true);
-                    $("#cat_wrap_cat_header").attr("class","cat_header_active");
-                });
-                $('.cat_subcont').mouseleave(function(){
-                    $('.cat_subcont').removeClass('active');
-                    $('.cat_wrap .cat_list .float').removeClass('active');
-                    $("#cat_wrap_cat_header").removeAttr("data-inSubContent");
-                    $("#cat_wrap_cat_header").attr("class","cat_header");
-                });
-            });
-        </script>
-    </nav>
+</nav>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- 轮播图 -->
 <div class="swiper-container" dir="rtl">
     <div class="swiper-wrapper">
@@ -1780,23 +1896,6 @@
         </div>
     </footer>
 </aside>
-<script type="text/javascript">
-    let header_height=document.getElementsByTagName("header")[0].offsetHeight+5;
-    let sy=0;
-    let search_float_div=document.getElementById("search_float_div");
-    let top_div=document.getElementById("top");
-    window.onscroll=function () {
-        sy = document.documentElement.scrollTop || document.body.scrollTop;//滚动条y轴上的距离
-        if(sy>=header_height){
-            search_float_div.style.display="block";
-            top_div.style.display="none";
-        }else{
-            search_float_div.style.display="none";
-            top_div.style.display="block";
-        }
-    }
-
-</script>
 </body>
 
 </html>
