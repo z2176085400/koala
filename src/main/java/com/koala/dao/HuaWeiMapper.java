@@ -2,7 +2,7 @@ package com.koala.dao;
 
 import com.koala.entity.HuaWei;
 
-public interface HuaiWeiMapper {
+public interface HuaWeiMapper {
     int deleteByPrimaryKey(Integer hid);
 
     int insert(HuaWei record);

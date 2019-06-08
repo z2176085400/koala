@@ -1,12 +1,10 @@
 package com.koala.entity;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 public class User {
     private Integer uid;
-    @NotEmpty(message = "用户名不能为空")
+
     private String username;
-    @NotEmpty(message = "密码不能为空")
+
     private String password;
 
     private Integer status;
@@ -39,7 +37,7 @@ public class User {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

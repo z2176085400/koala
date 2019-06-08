@@ -17,6 +17,8 @@ public class Goods {
 
     private Integer sid;
 
+    private Integer hid;
+
     public Integer getGid() {
         return gid;
     }
@@ -79,5 +81,13 @@ public class Goods {
 
     public void setSid(Integer sid) {
         this.sid = sid;
+    }
+
+    public Integer getHid() {
+        return hid;
+    }
+
+    public void setHid(Integer hid) {
+        this.hid = hid;
     }
 }

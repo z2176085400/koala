@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koala.dao.DetailsMapper">
+  <resultMap id="BaseResultMap" type="com.koala.entity.Details">
+    <id column="detailsid" jdbcType="INTEGER" property="detailsid" />
+    <result column="goodsid" jdbcType="INTEGER" property="goodsid" />
+    <result column="propertyid" jdbcType="INTEGER" property="propertyid" />
+    <result column="value" jdbcType="INTEGER" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    detailsid, goodsid, propertyid, value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_details
+    where detailsid = #{detailsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_details
+    where detailsid = #{detailsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.koala.entity.Details">
+    insert into t_details (detailsid, goodsid, propertyid, 
+      value)
+    values (#{detailsid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, #{propertyid,jdbcType=INTEGER}, 
+      #{value,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.koala.entity.Details">
+    insert into t_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailsid != null">
+        detailsid,
+      </if>
+      <if test="goodsid != null">
+        goodsid,
+      </if>
+      <if test="propertyid != null">
+        propertyid,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailsid != null">
+        #{detailsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="propertyid != null">
+        #{propertyid,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.koala.entity.Details">
+    update t_details
+    <set>
+      <if test="goodsid != null">
+        goodsid = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="propertyid != null">
+        propertyid = #{propertyid,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=INTEGER},
+      </if>
+    </set>
+    where detailsid = #{detailsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.koala.entity.Details">
+    update t_details
+    set goodsid = #{goodsid,jdbcType=INTEGER},
+      propertyid = #{propertyid,jdbcType=INTEGER},
+      value = #{value,jdbcType=INTEGER}
+    where detailsid = #{detailsid,jdbcType=INTEGER}
+  </update>
+</mapper>
