@@ -2,137 +2,152 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>首页</title>
-	<link rel="stylesheet" href="../css/index.css">
-	<link rel="stylesheet" href="../css/style.css">
-	<meta name="viewport" content="width=device-width">
-	<script src="../lb/jquery-1.11.3.js"></script>
-	<script src="../this_locality.js/index.top.js"></script>
-	<script src="../lb/axios.js"></script>
-	<script src="../this_locality.js/comfy.js"></script>
-	<link rel="stylesheet" href="../wenzitubiao/font_a2huyqo64b/iconfont.css">
-	<link rel="stylesheet" href="../css/lunbo.css">
-	<script src="../js/common.lunbo.js"></script>
-	<script src="../this_locality.js/cook.js"></script>
-	<link rel="stylesheet" href="../css/youhuiqu.css">
-	<link href="../pagination/pagination.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="../pagination/jquery.pagination.js"> </script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <meta name="viewport" content="width=device-width">
+    <script src="../lb/jquery-1.11.3.js"></script>
+    <script src="../this_locality.js/index.top.js"></script>
+    <script src="../lb/axios.js"></script>
+    <script src="../this_locality.js/comfy.js"></script>
+    <link rel="stylesheet" href="../wenzitubiao/font_a2huyqo64b/iconfont.css">
+    <link rel="stylesheet" href="../css/lunbo.css">
+    <script src="../js/common.lunbo.js"></script>
+    <script src="../this_locality.js/cook.js"></script>
+    <link rel="stylesheet" href="../css/youhuiqu.css">
+    <link href="../pagination/pagination.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../pagination/jquery.pagination.js"></script>
 
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            font-family: 'microsoft yahei';
+            overflow: hidden;
+            /*  background:#fff;*/
+        }
 
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
 
-	<style type="text/css">
-		* {
-			margin:0;
-			padding:0;
-		}
-		body {
-			font-family:'microsoft yahei';
-			overflow:hidden;
-			/*  background:#fff;*/
-		}
-		.w {
-			width:1200px;
-			margin:0 auto;
-		}
-		a {
-			text-decoration:inherit;
-		}
-		a,li {
-			list-style:none;
-		}
-		.cf:before,.cf:after,.clearfix:before,.clearfix:after {
-			content:"";
-			display:table;
-		}
-		.cf:after,.clearfix:after {
-			clear:both;
-		}
-		.cf,.clearfix {
-			clear:both;
-			*zoom:1;
-		}
-		/*导航条*/
-		#nav {
-			width:100%;
-			height:60px;
-			margin-top:110px;
-			margin-bottom: 1px;
-			vertical-align: middle;
-			padding-left: 24px;
-		}
-		#nav ul li {
-			float:left;
-		}
-		#nav ul li:first-child {
-			margin-left:17%;
-		}
-		#nav ul li a {
-			font-size:16px;
-			color:#0f090a;
-			line-height:30px;
-			padding:0 30px;
-			display:inline-block;
-		}
-		#nav ul li a:hover {
-			font-size:16px;
-			color: #ea273d;
-		}
-		#nav ul li.active a {
-			background:#fff000;
-			color:#bbbbbb;
-		}
-		/*banner上面浮层*/
-		.cat_wrap {
-			/*box-shadow:1px 1px 2px #bbbbbb;*/
-			/*box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);*/
-			/*background:#FF2A55;*/
-			width:180px;
-			height: 430px;
-			position:absolute;
-			z-index:9;
-			top:-50px;
-		}
-		.cat_wrap .cat_title {
-			width:193px;
-			height:50px;
-			line-height:50px;
-			font-size:16px;
-			background:url(../img/x.png) no-repeat;
-			margin-left:-6px;
-			margin-top:-15px;
-			background-size:100%;
-			color:#fff;
-			text-align:center;
-			position: relative;
-			z-index: 10;
-		}
-		.cat_wrap .cat_header {
-			display: none;
-			margin-top: -10px;
-			min-height:425px;
-			box-shadow:1px 1px 2px #bbbbbb;
-			box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);
-			background:#FF2A55;
-			position: relative;
-			z-index: 9;
-		}
-		.cat_wrap .cat_header_active {
-			display: block;
-			margin-top: -10px;
-			min-height:425px;
-			box-shadow:1px 1px 2px #bbbbbb;
-			box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);
-			background:#FF2A55;
-			position: relative;
-			z-index: 9;
-		}
-		/*.cat_title:hover ~ .cat_header{
+        a {
+            text-decoration: inherit;
+        }
+
+        a, li {
+            list-style: none;
+        }
+
+        .cf:before, .cf:after, .clearfix:before, .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .cf:after, .clearfix:after {
+            clear: both;
+        }
+
+        .cf, .clearfix {
+            clear: both;
+            *zoom: 1;
+        }
+
+        /*导航条*/
+        #nav {
+            width: 100%;
+            height: 60px;
+            margin-top: 110px;
+            margin-bottom: 1px;
+            vertical-align: middle;
+            padding-left: 24px;
+        }
+
+        #nav ul li {
+            float: left;
+        }
+
+        #nav ul li:first-child {
+            margin-left: 17%;
+        }
+
+        #nav ul li a {
+            font-size: 16px;
+            color: #0f090a;
+            line-height: 30px;
+            padding: 0 30px;
+            display: inline-block;
+        }
+
+        #nav ul li a:hover {
+            font-size: 16px;
+            color: #ea273d;
+        }
+
+        #nav ul li.active a {
+            background: #fff000;
+            color: #bbbbbb;
+        }
+
+        /*banner上面浮层*/
+        .cat_wrap {
+            /*box-shadow:1px 1px 2px #bbbbbb;*/
+            /*box-shadow:0 -4px 8px 0 rgba(7,17,27,.1),0 4px 8px 0 rgba(7,17,27,.1);*/
+            /*background:#FF2A55;*/
+            width: 180px;
+            height: 430px;
+            position: absolute;
+            z-index: 9;
+            top: -50px;
+        }
+
+        .cat_wrap .cat_title {
+            width: 193px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            background: url(../img/x.png) no-repeat;
+            margin-left: -6px;
+            margin-top: -15px;
+            background-size: 100%;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cat_wrap .cat_header {
+            display: none;
+            margin-top: -10px;
+            min-height: 425px;
+            box-shadow: 1px 1px 2px #bbbbbb;
+            box-shadow: 0 -4px 8px 0 rgba(7, 17, 27, .1), 0 4px 8px 0 rgba(7, 17, 27, .1);
+            background: #FF2A55;
+            position: relative;
+            z-index: 9;
+        }
+
+        .cat_wrap .cat_header_active {
+            display: block;
+            margin-top: -10px;
+            min-height: 425px;
+            box-shadow: 1px 1px 2px #bbbbbb;
+            box-shadow: 0 -4px 8px 0 rgba(7, 17, 27, .1), 0 4px 8px 0 rgba(7, 17, 27, .1);
+            background: #FF2A55;
+            position: relative;
+            z-index: 9;
+        }
+
+        /*.cat_title:hover ~ .cat_header{
             display:block;
         }
         .cat_header:hover{
@@ -142,1069 +157,1054 @@
             display:block;
         }*/
 
+        .cat_wrap .cat_list div {
+            background: #fff;
+            border-left: 3px solid transparent;
+        }
 
-		.cat_wrap .cat_list div {
-			background:#fff;
-			border-left:3px solid transparent;
-		}
-		.cat_wrap .cat_list div li {
-			float:left;
-			color: #ffffff;
-			font-size:14px;
-			margin:7px 0px;
-		}
-		.cat_wrap .cat_list div li:first-child {
-			margin-left:15px;
-			margin-right:10px;
-		}
-		.cat_wrap .cat_list {
-			cursor:pointer;
-		}
-		.cat_wrap .cat_list div.active {
-			width:177px;
-			padding-left:1px;
-			position:relative;
-			z-index:9;
-			border-left:3px solid #00a1ea;
-			border-top:1px solid #00a1ea;
-			border-bottom:1px solid #00a1ea;
-			border-right:none;
-		}
-		/*banner浮层滑动显示弹框*/
-		.cat_subcont {
-			display:none;
-			min-width: 500px;
-		}
-		.cat_subcont.active {
-			display:block;
-		}
-		.cat_subcont:hover {
-			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			color: #ea273d;
-		}
-		.cat_subcont .cat_sublist {
-			position:absolute;
-			z-index:10;
-			top:30px;
-			left:180px;
-			padding-top:5px;
-			min-height:394px;
-			width:740px;
-			background:#fff;
-			border-top:1px solid #f9f9f9;
-			border-left:1px solid #00a1ea;
-			border-bottom:1px solid #00a1ea;
-			border-right:1px solid #00a1ea;
-		}
-		.cat_subcont .cat_sublist .fore1 {
-			width:740px;
-		}
-		.cat_subcont .cat_sublist .fore1 .fore_list {
-			padding:0 20px;
-			min-height: 80px;
-		}
-		.cat_subcont .cat_sublist .fore1 .fore_list h3 {
-			padding:5px;
-			border-bottom:1px solid #d3d3d3;
-		}
-		.cat_subcont .cat_sublist .fore1 .fore_list h3 a {
-			font-size:14px;
-			color:#00a1ea;
-		}
-		.cat_subcont .cat_sublist .fore1 .fore_list li {
-			float:left;
-			padding:5px;
-		}
-		.cat_subcont .cat_sublist .fore1 .fore_list li a {
-			font-size:12px;
-			color:#333;
-		}
-		.cat_subcont .cat_sublist .fore1 .fore_list li a:hover {
-			color:#FF2A55;
-			text-decoration:underline;
-		}
-	</style>
+        .cat_wrap .cat_list div li {
+            float: left;
+            color: #ffffff;
+            font-size: 14px;
+            margin: 7px 0px;
+        }
+
+        .cat_wrap .cat_list div li:first-child {
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+
+        .cat_wrap .cat_list {
+            cursor: pointer;
+        }
+
+        .cat_wrap .cat_list div.active {
+            width: 177px;
+            padding-left: 1px;
+            position: relative;
+            z-index: 9;
+            border-left: 3px solid #00a1ea;
+            border-top: 1px solid #00a1ea;
+            border-bottom: 1px solid #00a1ea;
+            border-right: none;
+        }
+
+        /*banner浮层滑动显示弹框*/
+        .cat_subcont {
+            display: none;
+            min-width: 500px;
+        }
+
+        .cat_subcont.active {
+            display: block;
+        }
+
+        .cat_subcont:hover {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #ea273d;
+        }
+
+        .cat_subcont .cat_sublist {
+            position: absolute;
+            z-index: 10;
+            top: 30px;
+            left: 180px;
+            padding-top: 5px;
+            min-height: 394px;
+            width: 740px;
+            background: #fff;
+            border-top: 1px solid #f9f9f9;
+            border-left: 1px solid #00a1ea;
+            border-bottom: 1px solid #00a1ea;
+            border-right: 1px solid #00a1ea;
+        }
+
+        .cat_subcont .cat_sublist .fore1 {
+            width: 740px;
+        }
+
+        .cat_subcont .cat_sublist .fore1 .fore_list {
+            padding: 0 20px;
+            min-height: 80px;
+        }
+
+        .cat_subcont .cat_sublist .fore1 .fore_list h3 {
+            padding: 5px;
+            border-bottom: 1px solid #d3d3d3;
+        }
+
+        .cat_subcont .cat_sublist .fore1 .fore_list h3 a {
+            font-size: 14px;
+            color: #00a1ea;
+        }
+
+        .cat_subcont .cat_sublist .fore1 .fore_list li {
+            float: left;
+            padding: 5px;
+        }
+
+        .cat_subcont .cat_sublist .fore1 .fore_list li a {
+            font-size: 12px;
+            color: #333;
+        }
+
+        .cat_subcont .cat_sublist .fore1 .fore_list li a:hover {
+            color: #FF2A55;
+            text-decoration: underline;
+        }
+    </style>
 
 </head>
 
 <body>
 <header>
-	<nav>
-		<!-- top-left未登录 -->
-		<ul id="top-left">
-			<li>考拉欢迎您！</li>
-			<li><a href="login.html">登录</a></li>
-			<li><a href="reg.html">免费注册</a></li>
-			<li class="img">
-				<a class="shouji" href="#">手机考拉</a>
-				<span class="erweima-span"></span>
-				<img src="../img/top-erweima.png" alt="">
-			</li>
-		</ul>
-		<!-- top-left登录 -->
-		<div id="yidenglu">
-			<span id="delu-span">你好:</span>
-			<i id="user-name"></i>
-			<a href="javascript:;" id="tuichu">退出</a>
-			<a class="shouji" href="#">手机考拉
-				<span class="erweima-span"></span>
-				<img src="../img/top-erweima.png" alt="">
-			</a>
-		</div>
-		<!-- top-right -->
-		<div id="topnanv">
-			<div class="defu">
-				<a href="#" target="_self">每日签到</a>
-				<a href="#" target="_self">我的订单</a>
-			</div>
-			<div id="anvlfteb">
-				<div selec="bbs" class="posbox"> <a href="#">个人中心</a> <i></i>
-					<div id="center_1"></div>
-				</div>
-				<div selec="news" class="posbox"><a href="#">客户服务</a> <i></i>
-					<div id="center_2"></div>
-				</div>
-				<div selec="post" class="posbox"><a href="#">充值中心</a> <i></i>
-					<div id="center_3"></div>
-				</div>
-				<div selec="youhui" class="posbox xiaofei"><a href="#">消费者权益</a> <i></i>
-					<div id="center_4"></div>
-				</div>
-				<div selec="other" class="posbox"><a href="#">更多</a> <i></i>
-					<div id="center_5"></div>
-				</div>
-				<div id="seledbox" class="posiabox" style="display: none; left: 1px;">
-					<div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-	<div id="top">
-		<div id="docHead">
-			<a href="#" class="logo-t"><img src="../img/logo.png" alt=""></a>
-			<div class="m-searchiptbox">
-				<div class="sousuo">
-					<span class="span-fangdajing iconfont icon-index"></span>
-					<input class="sousuo-ipt" type="text" placeholder="请输入您要查询的商品">
-					<span class="span-gowu iconfont icon-index"></span>
-				</div>
-				<ul class="list">
-					<li><a href="#" class="teshu1">面膜</a></li>
-					<li><a href="#">口红</a> </li>
-					<li><a href="#">减肥</a> </li>
-					<li><a href="#" class="teshu">全球工厂店</a> </li>
-					<li><a href="#">运动鞋</a></li>
-					<li><a href="#">项链</a></li>
-					<li><a href="#">女包</a></li>
-				</ul>
-			</div>
-			<div class="add-gouwu">
-				<a href="#"><span class="iconfont icon-kefu1"></span></a>
-				<a href="cart.html"><i>购物车</i></a>
-			</div>
+    <nav>
+        <!-- top-left未登录 -->
+        <ul id="top-left">
+            <li>考拉欢迎您！</li>
+            <li><a href="login.html">登录</a></li>
+            <li><a href="reg.html">免费注册</a></li>
+            <li class="img">
+                <a class="shouji" href="#">手机考拉</a>
+                <span class="erweima-span"></span>
+                <img src="../img/top-erweima.png" alt="">
+            </li>
+        </ul>
+        <!-- top-left登录 -->
+        <div id="yidenglu">
+            <span id="delu-span">你好:</span>
+            <i id="user-name"></i>
+            <a href="javascript:;" id="tuichu">退出</a>
+            <a class="shouji" href="#">手机考拉
+                <span class="erweima-span"></span>
+                <img src="../img/top-erweima.png" alt="">
+            </a>
+        </div>
+        <!-- top-right -->
+        <div id="topnanv">
+            <div class="defu">
+                <a href="#" target="_self">每日签到</a>
+                <a href="#" target="_self">我的订单</a>
+            </div>
+            <div id="anvlfteb">
+                <div selec="bbs" class="posbox"><a href="#">个人中心</a> <i></i>
+                    <div id="center_1"></div>
+                </div>
+                <div selec="news" class="posbox"><a href="#">客户服务</a> <i></i>
+                    <div id="center_2"></div>
+                </div>
+                <div selec="post" class="posbox"><a href="#">充值中心</a> <i></i>
+                    <div id="center_3"></div>
+                </div>
+                <div selec="youhui" class="posbox xiaofei"><a href="#">消费者权益</a> <i></i>
+                    <div id="center_4"></div>
+                </div>
+                <div selec="other" class="posbox"><a href="#">更多</a> <i></i>
+                    <div id="center_5"></div>
+                </div>
+                <div id="seledbox" class="posiabox" style="display: none; left: 1px;">
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="top">
+        <div id="docHead">
+            <a href="#" class="logo-t"><img src="../img/logo.png" alt=""></a>
+            <div class="m-searchiptbox">
+                <div class="sousuo">
+                    <span class="span-fangdajing iconfont icon-index"></span>
+                    <input class="sousuo-ipt" type="text" placeholder="请输入您要查询的商品">
+                    <span class="span-gowu iconfont icon-index"></span>
+                </div>
+                <ul class="list">
+                    <li><a href="#" class="teshu1">面膜</a></li>
+                    <li><a href="#">口红</a></li>
+                    <li><a href="#">减肥</a></li>
+                    <li><a href="#" class="teshu">全球工厂店</a></li>
+                    <li><a href="#">运动鞋</a></li>
+                    <li><a href="#">项链</a></li>
+                    <li><a href="#">女包</a></li>
+                </ul>
+            </div>
+            <div class="add-gouwu">
+                <a href="#"><span class="iconfont icon-kefu1"></span></a>
+                <a href="cart.html"><i>购物车</i></a>
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </header>
 <div id="search_float_div" style="position:fixed;width:100%;top: 0px;background: #eee;z-index: 999;height: 51px;display: none">
-	<div id="docHead" style="margin-top: 5px;">
-		<div style="float: left;"><a href="#"><img src="../img/logo-min.png" alt="" width="162" height="40"></a></div>
-		<div class="m-searchiptbox" style="float: left;margin-top: 5px;margin-left: 200px;">
-			<div class="sousuo" style="margin-top: -5px;">
-				<span class="span-fangdajing iconfont icon-index"></span>
-				<input class="sousuo-ipt" type="text" placeholder="请输入您要查询的商品">
-				<span class="span-gowu iconfont icon-index"></span>
-			</div>
-		</div>
-	</div>
+    <div id="docHead" style="margin-top: 5px;">
+        <div style="float: left;"><a href="#"><img src="../img/logo-min.png" alt="" width="162" height="40"></a></div>
+        <div class="m-searchiptbox" style="float: left;margin-top: 5px;margin-left: 200px;">
+            <div class="sousuo" style="margin-top: -5px;">
+                <span class="span-fangdajing iconfont icon-index"></span>
+                <input class="sousuo-ipt" type="text" placeholder="请输入您要查询的商品">
+                <span class="span-gowu iconfont icon-index"></span>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- 所有分类 -->
 <div>
-	<nav style="width: 1090px;margin:0 auto;">
-		<div id="nav">
-			<ul>
-				<li><a href="#">首页</a></li>
-				<li><a href="#">今日限时购</a></li>
-				<li><a href="#">每日上新</a></li>
-				<li><a href="#">国家馆</a></li>
-				<li><a href="#">海外旗舰店</a></li>
-				<li><a href="#">工厂店</a></li>
-				<li><a href="#">品质奶粉</a></li>
-			</ul>
-		</div>
-		<div style="position:relative;">
-			<!-- banner上面浮层 -->
-			<div class="cat_wrap">
-				<h3 class="cat_title">全部分类</h3>
-				<div id="cat_wrap_cat_header" class="cat_header">
-					<div class="cat_list">
-						<div class="float for1">
-							<ul class="clearfix">
-								<li>美容</li>
-								<li>彩妆</li>
-							</ul>
-						</div>
-						<div class="float for2">
-							<ul class="clearfix">
-								<li>母婴</li>
-								<li>儿童</li>
-							</ul>
-						</div>
-						<div class="float for3">
-							<ul class="clearfix">
-								<li>营养</li>
-								<li>保健</li>
-							</ul>
-						</div>
-						<div class="float for3">
-							<ul class="clearfix">
-								<li>数码</li>
-								<li>家电</li>
-							</ul>
-						</div>
-						<div class="float for3">
-							<ul class="clearfix">
-								<li>个人</li>
-								<li>洗护</li>
-							</ul>
-						</div>
-						<div class="float for3">
-							<ul class="clearfix">
-								<li>服饰</li>
-								<li>鞋靴</li>
-							</ul>
-						</div>
-						<div class="float for3">
-							<ul class="clearfix">
-								<li>运动</li>
-								<li>户外</li>
-							</ul>
-						</div>
-						<div class="float for3">
-							<ul class="clearfix">
-								<li>手表</li>
-								<li>配饰</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- banner浮层滑动显示弹框 -->
-				<div class="cat_subcont">
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">护肤</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">洁面</a></li>
-									<li><a href="javascript:void(0);">卸妆</a></li>
-									<li><a href="javascript:void(0);">爽肤水</a></li>
-									<li><a href="javascript:void(0);">精油芳疗</a></li>
-									<li><a href="javascript:void(0);">男士护肤</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">面膜</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">美迪惠尔</a></li>
-									<li><a href="javascript:void(0);">RAY</a></li>
-									<li><a href="javascript:void(0);">春雨</a></li>
-									<li><a href="javascript:void(0);">佑天兰</a></li>
-									<li><a href="javascript:void(0);">香蒲丽</a></li>
-									<li><a href="javascript:void(0);">SNP</a></li>
-									<li><a href="javascript:void(0);">其他面膜</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">彩妆</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">美甲</a></li>
-									<li><a href="javascript:void(0);">眉笔</a></li>
-									<li><a href="javascript:void(0);">香水</a></li>
-									<li><a href="javascript:void(0);">眼影</a></li>
-									<li><a href="javascript:void(0);">BB霜/CC霜</a></li>
-									<li><a href="javascript:void(0);">粉底</a></li>
-									<li><a href="javascript:void(0);">腮红</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">防嗮修复</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">水宝宝</a></li>
-									<li><a href="javascript:void(0);">香蕉船</a></li>
-									<li><a href="javascript:void(0);">高丝</a></li>
-									<li><a href="javascript:void(0);">苏菲娜</a></li>
-									<li><a href="javascript:void(0);">娜丽丝</a></li>
-									<li><a href="javascript:void(0);">安耐晒</a></li>
-									<li><a href="javascript:void(0);">碧柔</a></li>
-								</ul>
-							</div>
-						</div>
+    <nav style="width: 1090px;margin:0 auto;">
+        <div id="nav">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">今日限时购</a></li>
+                <li><a href="#">每日上新</a></li>
+                <li><a href="#">国家馆</a></li>
+                <li><a href="#">海外旗舰店</a></li>
+                <li><a href="#">工厂店</a></li>
+                <li><a href="#">品质奶粉</a></li>
+            </ul>
+        </div>
+        <div style="position:relative;">
+            <!-- banner上面浮层 -->
+            <div class="cat_wrap">
+                <h3 class="cat_title">全部分类</h3>
+                <div id="cat_wrap_cat_header" class="cat_header">
+                    <div class="cat_list">
+                        <div class="float for1">
+                            <ul class="clearfix">
+                                <li>美容</li>
+                                <li>彩妆</li>
+                            </ul>
+                        </div>
+                        <div class="float for2">
+                            <ul class="clearfix">
+                                <li>母婴</li>
+                                <li>儿童</li>
+                            </ul>
+                        </div>
+                        <div class="float for3">
+                            <ul class="clearfix">
+                                <li>营养</li>
+                                <li>保健</li>
+                            </ul>
+                        </div>
+                        <div class="float for3">
+                            <ul class="clearfix">
+                                <li>数码</li>
+                                <li>家电</li>
+                            </ul>
+                        </div>
+                        <div class="float for3">
+                            <ul class="clearfix">
+                                <li>个人</li>
+                                <li>洗护</li>
+                            </ul>
+                        </div>
+                        <div class="float for3">
+                            <ul class="clearfix">
+                                <li>服饰</li>
+                                <li>鞋靴</li>
+                            </ul>
+                        </div>
+                        <div class="float for3">
+                            <ul class="clearfix">
+                                <li>运动</li>
+                                <li>户外</li>
+                            </ul>
+                        </div>
+                        <div class="float for3">
+                            <ul class="clearfix">
+                                <li>手表</li>
+                                <li>配饰</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- banner浮层滑动显示弹框 -->
+                <div class="cat_subcont">
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">护肤</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">洁面</a></li>
+                                    <li><a href="javascript:void(0);">卸妆</a></li>
+                                    <li><a href="javascript:void(0);">爽肤水</a></li>
+                                    <li><a href="javascript:void(0);">精油芳疗</a></li>
+                                    <li><a href="javascript:void(0);">男士护肤</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">面膜</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">美迪惠尔</a></li>
+                                    <li><a href="javascript:void(0);">RAY</a></li>
+                                    <li><a href="javascript:void(0);">春雨</a></li>
+                                    <li><a href="javascript:void(0);">佑天兰</a></li>
+                                    <li><a href="javascript:void(0);">香蒲丽</a></li>
+                                    <li><a href="javascript:void(0);">SNP</a></li>
+                                    <li><a href="javascript:void(0);">其他面膜</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">彩妆</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">美甲</a></li>
+                                    <li><a href="javascript:void(0);">眉笔</a></li>
+                                    <li><a href="javascript:void(0);">香水</a></li>
+                                    <li><a href="javascript:void(0);">眼影</a></li>
+                                    <li><a href="javascript:void(0);">BB霜/CC霜</a></li>
+                                    <li><a href="javascript:void(0);">粉底</a></li>
+                                    <li><a href="javascript:void(0);">腮红</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">防嗮修复</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">水宝宝</a></li>
+                                    <li><a href="javascript:void(0);">香蕉船</a></li>
+                                    <li><a href="javascript:void(0);">高丝</a></li>
+                                    <li><a href="javascript:void(0);">苏菲娜</a></li>
+                                    <li><a href="javascript:void(0);">娜丽丝</a></li>
+                                    <li><a href="javascript:void(0);">安耐晒</a></li>
+                                    <li><a href="javascript:void(0);">碧柔</a></li>
+                                </ul>
+                            </div>
+                        </div>
 
-					</div>
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">奶粉</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">牛栏</a></li>
-									<li><a href="javascript:void(0);">a2</a></li>
-									<li><a href="javascript:void(0);">合生元</a></li>
-									<li><a href="javascript:void(0);">Pre段</a></li>
-									<li><a href="javascript:void(0);">雅培</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">子尿裤/拉拉裤</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">花王</a></li>
-									<li><a href="javascript:void(0);">尤妮佳</a></li>
-									<li><a href="javascript:void(0);">大王</a></li>
-									<li><a href="javascript:void(0);">好奇</a></li>
-									<li><a href="javascript:void(0);">帮宝适</a></li>
-									<li><a href="javascript:void(0);">妈咪宝贝</a></li>
-									<li><a href="javascript:void(0);">妮飘</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">宝宝玩具用书</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">图书绘本</a></li>
-									<li><a href="javascript:void(0);">积木拼插</a></li>
-									<li><a href="javascript:void(0);">早教益智</a></li>
-									<li><a href="javascript:void(0);">宝宝家居</a></li>
-									<li><a href="javascript:void(0);">爬行学步</a></li>
-									<li><a href="javascript:void(0);">小家电</a></li>
-									<li><a href="javascript:void(0);">其他玩具</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">孕妈必备</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">孕妈洗护</a></li>
-									<li><a href="javascript:void(0);">孕期营养</a></li>
-									<li><a href="javascript:void(0);">产前产后用品</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">女性健康</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">胶原蛋白</a></li>
-									<li><a href="javascript:void(0);">蔓越莓</a></li>
-									<li><a href="javascript:void(0);">燕窝</a></li>
-									<li><a href="javascript:void(0);">补血补气</a></li>
-									<li><a href="javascript:void(0);">调节内分泌</a></li>
-									<li><a href="javascript:void(0);">早更年期</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">男士必备</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">增肌粉</a></li>
-									<li><a href="javascript:void(0);">玛咖</a></li>
-									<li><a href="javascript:void(0);">护肝片</a></li>
-									<li><a href="javascript:void(0);">男士备孕</a></li>
-									<li><a href="javascript:void(0);">护发防脱</a></li>
-									<li><a href="javascript:void(0);">改善视力</a></li>
-									<li><a href="javascript:void(0);">叶黄素</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">关爱爸妈</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">钙片</a></li>
-									<li><a href="javascript:void(0);">鱼肝油</a></li>
-									<li><a href="javascript:void(0);">蜂胶</a></li>
-									<li><a href="javascript:void(0);">银杏</a></li>
-									<li><a href="javascript:void(0);">蛋白粉</a></li>
-									<li><a href="javascript:void(0);">血脂血压</a></li>
-									<li><a href="javascript:void(0);">改善睡眠</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">滋补养生</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">参类</a></li>
-									<li><a href="javascript:void(0);">蜂蜜</a></li>
-									<li><a href="javascript:void(0);">养生茶</a></li>
-									<li><a href="javascript:void(0);">阿胶</a></li>
-									<li><a href="javascript:void(0);">燕窝</a></li>
-									<li><a href="javascript:void(0);">润肺养胃</a></li>
-									<li><a href="javascript:void(0);">黑枸杞</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">手机</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">苹果</a></li>
-									<li><a href="javascript:void(0);">华为</a></li>
-									<li><a href="javascript:void(0);">小米</a></li>
-									<li><a href="javascript:void(0);">OPPO</a></li>
-									<li><a href="javascript:void(0);">vivo</a></li>
-									<li><a href="javascript:void(0);">三星</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">智能影音</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">Beats</a></li>
-									<li><a href="javascript:void(0);">BOSE</a></li>
-									<li><a href="javascript:void(0);">小米</a></li>
-									<li><a href="javascript:void(0);">拍立得</a></li>
-									<li><a href="javascript:void(0);">微单</a></li>
-									<li><a href="javascript:void(0);">音响</a></li>
-									<li><a href="javascript:void(0);">智能设备</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">生活电器</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">戴森</a></li>
-									<li><a href="javascript:void(0);">电风扇</a></li>
-									<li><a href="javascript:void(0);">洗衣机</a></li>
-									<li><a href="javascript:void(0);">电视</a></li>
-									<li><a href="javascript:void(0);">空调</a></li>
-									<li><a href="javascript:void(0);">稍低机器人</a></li>
-									<li><a href="javascript:void(0);">空气净化器</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">厨房电器</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">热水壶/饮水机</a></li>
-									<li><a href="javascript:void(0);">咖啡机</a></li>
-									<li><a href="javascript:void(0);">榨汁机</a></li>
-									<li><a href="javascript:void(0);">电饭煲</a></li>
-									<li><a href="javascript:void(0);">净水器</a></li>
-									<li><a href="javascript:void(0);">烤箱</a></li>
-									<li><a href="javascript:void(0);">面包机</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">办公外设</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">电脑/平板电脑</a></li>
-									<li><a href="javascript:void(0);">智能手表</a></li>
-									<li><a href="javascript:void(0);">照片打印机</a></li>
-									<li><a href="javascript:void(0);">鼠标</a></li>
-									<li><a href="javascript:void(0);">投影仪</a></li>
-									<li><a href="javascript:void(0);">键盘</a></li>
-									<li><a href="javascript:void(0);">凌美</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">洗发护发</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">洗发水</a></li>
-									<li><a href="javascript:void(0);">护发素</a></li>
-									<li><a href="javascript:void(0);">发膜</a></li>
-									<li><a href="javascript:void(0);">洗发皂</a></li>
-									<li><a href="javascript:void(0);">染发剂</a></li>
-									<li><a href="javascript:void(0);">头发造型</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">身体护理</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">足部护理</a></li>
-									<li><a href="javascript:void(0);">手部护理</a></li>
-									<li><a href="javascript:void(0);">沐浴清洁</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">口轻护理</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">凝胶</a></li>
-									<li><a href="javascript:void(0);">牙线</a></li>
-									<li><a href="javascript:void(0);">牙粉</a></li>
-									<li><a href="javascript:void(0);">牙膏</a></li>
-									<li><a href="javascript:void(0);">漱口水</a></li>
-									<li><a href="javascript:void(0);">牙刷</a></li>
-									<li><a href="javascript:void(0);">口腔护理套装</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">女性护理</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">私密洗液</a></li>
-									<li><a href="javascript:void(0);">卫生棉条</a></li>
-									<li><a href="javascript:void(0);">护垫</a></li>
-									<li><a href="javascript:void(0);">卫生巾</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">成人健康</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">口罩</a></li>
-									<li><a href="javascript:void(0);">眼罩</a></li>
-									<li><a href="javascript:void(0);">女用器具</a></li>
-									<li><a href="javascript:void(0);">男用器具</a></li>
-									<li><a href="javascript:void(0);">情趣玩具</a></li>
-									<li><a href="javascript:void(0);">人体润滑</a></li>
-									<li><a href="javascript:void(0);">避孕套</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">时尚新女性</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">连衣裙</a></li>
-									<li><a href="javascript:void(0);">女士T恤</a></li>
-									<li><a href="javascript:void(0);">女士卫衣</a></li>
-									<li><a href="javascript:void(0);">蕾丝衫</a></li>
-									<li><a href="javascript:void(0);">染女士风衣</a></li>
-									<li><a href="javascript:void(0);">半身裙</a></li>
-									<li><a href="javascript:void(0);">女士牛仔裤</a></li>
-									<li><a href="javascript:void(0);">文胸</a></li>
-									<li><a href="javascript:void(0);">半丝袜</a></li>
-									<li><a href="javascript:void(0);">高跟鞋</a></li>
-									<li><a href="javascript:void(0);">运动鞋</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">潮流新男性</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">男士T恤</a></li>
-									<li><a href="javascript:void(0);">男士衬衫</a></li>
-									<li><a href="javascript:void(0);">男士卫衣</a></li>
-									<li><a href="javascript:void(0);">男士外套</a></li>
-									<li><a href="javascript:void(0);">男士牛仔裤</a></li>
-									<li><a href="javascript:void(0);">男士内裤</a></li>
-									<li><a href="javascript:void(0);">男士休闲鞋</a></li>
-									<li><a href="javascript:void(0);">男士商务鞋</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">软萌婴童</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">儿童裙子</a></li>
-									<li><a href="javascript:void(0);">儿童套装</a></li>
-									<li><a href="javascript:void(0);">儿童外套</a></li>
-									<li><a href="javascript:void(0);">儿童T恤</a></li>
-									<li><a href="javascript:void(0);">儿童卫衣</a></li>
-									<li><a href="javascript:void(0);">儿童休闲鞋</a></li>
-									<li><a href="javascript:void(0);">儿童家居服</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">运动鞋</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">跑步鞋</a></li>
-									<li><a href="javascript:void(0);">休闲鞋</a></li>
-									<li><a href="javascript:void(0);">篮球鞋</a></li>
-									<li><a href="javascript:void(0);">NIKE</a></li>
-									<li><a href="javascript:void(0);">阿迪达斯</a></li>
-									<li><a href="javascript:void(0);">ASICS</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">运动服饰</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">运动T恤</a></li>
-									<li><a href="javascript:void(0);">运动卫衣</a></li>
-									<li><a href="javascript:void(0);">运动裤</a></li>
-									<li><a href="javascript:void(0);">NIJE</a></li>
-									<li><a href="javascript:void(0);">阿迪达斯</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">户外鞋靴</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">登山鞋</a></li>
-									<li><a href="javascript:void(0);">工装鞋</a></li>
-									<li><a href="javascript:void(0);">越野跑鞋</a></li>
-									<li><a href="javascript:void(0);">LOWA</a></li>
-									<li><a href="javascript:void(0);">Keen</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">更多分类</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">汽车机油</a></li>
-									<li><a href="javascript:void(0);">渔具</a></li>
-									<li><a href="javascript:void(0);">跑步机</a></li>
-									<li><a href="javascript:void(0);">游泳</a></li>
-									<li><a href="javascript:void(0);">运动相机</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="cat_sublist">
-						<!-- 浮层左边列表 -->
-						<div class="fore1">
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">腕表</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">瑞士名表</a></li>
-									<li><a href="javascript:void(0);">欧美腕表</a></li>
-									<li><a href="javascript:void(0);">欧米茄</a></li>
-									<li><a href="javascript:void(0);">浪琴</a></li>
-									<li><a href="javascript:void(0);">DW</a></li>
-									<li><a href="javascript:void(0);">卡西欧</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">大牌眼镜</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">Dior迪奥</a></li>
-									<li><a href="javascript:void(0);">PRADA</a></li>
-									<li><a href="javascript:void(0);">暴龙</a></li>
-									<li><a href="javascript:void(0);">陌森</a></li>
-									<li><a href="javascript:void(0);">FURLA</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">潮流饰品</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">项链</a></li>
-									<li><a href="javascript:void(0);">手链/手镯</a></li>
-									<li><a href="javascript:void(0);">耳饰</a></li>
-									<li><a href="javascript:void(0);">戒指</a></li>
-									<li><a href="javascript:void(0);">施华洛世奇</a></li>
-									<li><a href="javascript:void(0);">潘多拉</a></li>
-									<li><a href="javascript:void(0);">apm</a></li>
-								</ul>
-							</div>
-							<div class="fore_list">
-								<h3><a href="javascript:void(0);">黄金珠宝</a></h3>
-								<ul class="clearfix">
-									<li><a href="javascript:void(0);">周生生</a></li>
-									<li><a href="javascript:void(0);">周大福</a></li>
-									<li><a href="javascript:void(0);">铂金</a></li>
-									<li><a href="javascript:void(0);">钻石</a></li>
-									<li><a href="javascript:void(0);">珍珠</a></li>
-									<li><a href="javascript:void(0);">水晶玛瑙</a></li>
-									<li><a href="javascript:void(0);">翡翠玉石</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+                    </div>
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">奶粉</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">牛栏</a></li>
+                                    <li><a href="javascript:void(0);">a2</a></li>
+                                    <li><a href="javascript:void(0);">合生元</a></li>
+                                    <li><a href="javascript:void(0);">Pre段</a></li>
+                                    <li><a href="javascript:void(0);">雅培</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">子尿裤/拉拉裤</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">花王</a></li>
+                                    <li><a href="javascript:void(0);">尤妮佳</a></li>
+                                    <li><a href="javascript:void(0);">大王</a></li>
+                                    <li><a href="javascript:void(0);">好奇</a></li>
+                                    <li><a href="javascript:void(0);">帮宝适</a></li>
+                                    <li><a href="javascript:void(0);">妈咪宝贝</a></li>
+                                    <li><a href="javascript:void(0);">妮飘</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">宝宝玩具用书</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">图书绘本</a></li>
+                                    <li><a href="javascript:void(0);">积木拼插</a></li>
+                                    <li><a href="javascript:void(0);">早教益智</a></li>
+                                    <li><a href="javascript:void(0);">宝宝家居</a></li>
+                                    <li><a href="javascript:void(0);">爬行学步</a></li>
+                                    <li><a href="javascript:void(0);">小家电</a></li>
+                                    <li><a href="javascript:void(0);">其他玩具</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">孕妈必备</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">孕妈洗护</a></li>
+                                    <li><a href="javascript:void(0);">孕期营养</a></li>
+                                    <li><a href="javascript:void(0);">产前产后用品</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">女性健康</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">胶原蛋白</a></li>
+                                    <li><a href="javascript:void(0);">蔓越莓</a></li>
+                                    <li><a href="javascript:void(0);">燕窝</a></li>
+                                    <li><a href="javascript:void(0);">补血补气</a></li>
+                                    <li><a href="javascript:void(0);">调节内分泌</a></li>
+                                    <li><a href="javascript:void(0);">早更年期</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">男士必备</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">增肌粉</a></li>
+                                    <li><a href="javascript:void(0);">玛咖</a></li>
+                                    <li><a href="javascript:void(0);">护肝片</a></li>
+                                    <li><a href="javascript:void(0);">男士备孕</a></li>
+                                    <li><a href="javascript:void(0);">护发防脱</a></li>
+                                    <li><a href="javascript:void(0);">改善视力</a></li>
+                                    <li><a href="javascript:void(0);">叶黄素</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">关爱爸妈</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">钙片</a></li>
+                                    <li><a href="javascript:void(0);">鱼肝油</a></li>
+                                    <li><a href="javascript:void(0);">蜂胶</a></li>
+                                    <li><a href="javascript:void(0);">银杏</a></li>
+                                    <li><a href="javascript:void(0);">蛋白粉</a></li>
+                                    <li><a href="javascript:void(0);">血脂血压</a></li>
+                                    <li><a href="javascript:void(0);">改善睡眠</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">滋补养生</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">参类</a></li>
+                                    <li><a href="javascript:void(0);">蜂蜜</a></li>
+                                    <li><a href="javascript:void(0);">养生茶</a></li>
+                                    <li><a href="javascript:void(0);">阿胶</a></li>
+                                    <li><a href="javascript:void(0);">燕窝</a></li>
+                                    <li><a href="javascript:void(0);">润肺养胃</a></li>
+                                    <li><a href="javascript:void(0);">黑枸杞</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">手机</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">苹果</a></li>
+                                    <li><a href="liebiao.html;">华为</a></li>
+                                    <li><a href="javascript:void(0);">小米</a></li>
+                                    <li><a href="javascript:void(0);">OPPO</a></li>
+                                    <li><a href="javascript:void(0);">vivo</a></li>
+                                    <li><a href="javascript:void(0);">三星</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">智能影音</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">Beats</a></li>
+                                    <li><a href="javascript:void(0);">BOSE</a></li>
+                                    <li><a href="javascript:void(0);">小米</a></li>
+                                    <li><a href="javascript:void(0);">拍立得</a></li>
+                                    <li><a href="javascript:void(0);">微单</a></li>
+                                    <li><a href="javascript:void(0);">音响</a></li>
+                                    <li><a href="javascript:void(0);">智能设备</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">生活电器</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">戴森</a></li>
+                                    <li><a href="javascript:void(0);">电风扇</a></li>
+                                    <li><a href="javascript:void(0);">洗衣机</a></li>
+                                    <li><a href="javascript:void(0);">电视</a></li>
+                                    <li><a href="javascript:void(0);">空调</a></li>
+                                    <li><a href="javascript:void(0);">稍低机器人</a></li>
+                                    <li><a href="javascript:void(0);">空气净化器</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">厨房电器</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">热水壶/饮水机</a></li>
+                                    <li><a href="javascript:void(0);">咖啡机</a></li>
+                                    <li><a href="javascript:void(0);">榨汁机</a></li>
+                                    <li><a href="javascript:void(0);">电饭煲</a></li>
+                                    <li><a href="javascript:void(0);">净水器</a></li>
+                                    <li><a href="javascript:void(0);">烤箱</a></li>
+                                    <li><a href="javascript:void(0);">面包机</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">办公外设</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">电脑/平板电脑</a></li>
+                                    <li><a href="javascript:void(0);">智能手表</a></li>
+                                    <li><a href="javascript:void(0);">照片打印机</a></li>
+                                    <li><a href="javascript:void(0);">鼠标</a></li>
+                                    <li><a href="javascript:void(0);">投影仪</a></li>
+                                    <li><a href="javascript:void(0);">键盘</a></li>
+                                    <li><a href="javascript:void(0);">凌美</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">洗发护发</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">洗发水</a></li>
+                                    <li><a href="javascript:void(0);">护发素</a></li>
+                                    <li><a href="javascript:void(0);">发膜</a></li>
+                                    <li><a href="javascript:void(0);">洗发皂</a></li>
+                                    <li><a href="javascript:void(0);">染发剂</a></li>
+                                    <li><a href="javascript:void(0);">头发造型</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">身体护理</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">足部护理</a></li>
+                                    <li><a href="javascript:void(0);">手部护理</a></li>
+                                    <li><a href="javascript:void(0);">沐浴清洁</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">口轻护理</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">凝胶</a></li>
+                                    <li><a href="javascript:void(0);">牙线</a></li>
+                                    <li><a href="javascript:void(0);">牙粉</a></li>
+                                    <li><a href="javascript:void(0);">牙膏</a></li>
+                                    <li><a href="javascript:void(0);">漱口水</a></li>
+                                    <li><a href="javascript:void(0);">牙刷</a></li>
+                                    <li><a href="javascript:void(0);">口腔护理套装</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">女性护理</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">私密洗液</a></li>
+                                    <li><a href="javascript:void(0);">卫生棉条</a></li>
+                                    <li><a href="javascript:void(0);">护垫</a></li>
+                                    <li><a href="javascript:void(0);">卫生巾</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">成人健康</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">口罩</a></li>
+                                    <li><a href="javascript:void(0);">眼罩</a></li>
+                                    <li><a href="javascript:void(0);">女用器具</a></li>
+                                    <li><a href="javascript:void(0);">男用器具</a></li>
+                                    <li><a href="javascript:void(0);">情趣玩具</a></li>
+                                    <li><a href="javascript:void(0);">人体润滑</a></li>
+                                    <li><a href="javascript:void(0);">避孕套</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">时尚新女性</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">连衣裙</a></li>
+                                    <li><a href="javascript:void(0);">女士T恤</a></li>
+                                    <li><a href="javascript:void(0);">女士卫衣</a></li>
+                                    <li><a href="javascript:void(0);">蕾丝衫</a></li>
+                                    <li><a href="javascript:void(0);">染女士风衣</a></li>
+                                    <li><a href="javascript:void(0);">半身裙</a></li>
+                                    <li><a href="javascript:void(0);">女士牛仔裤</a></li>
+                                    <li><a href="javascript:void(0);">文胸</a></li>
+                                    <li><a href="javascript:void(0);">半丝袜</a></li>
+                                    <li><a href="javascript:void(0);">高跟鞋</a></li>
+                                    <li><a href="javascript:void(0);">运动鞋</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">潮流新男性</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">男士T恤</a></li>
+                                    <li><a href="javascript:void(0);">男士衬衫</a></li>
+                                    <li><a href="javascript:void(0);">男士卫衣</a></li>
+                                    <li><a href="javascript:void(0);">男士外套</a></li>
+                                    <li><a href="javascript:void(0);">男士牛仔裤</a></li>
+                                    <li><a href="javascript:void(0);">男士内裤</a></li>
+                                    <li><a href="javascript:void(0);">男士休闲鞋</a></li>
+                                    <li><a href="javascript:void(0);">男士商务鞋</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">软萌婴童</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">儿童裙子</a></li>
+                                    <li><a href="javascript:void(0);">儿童套装</a></li>
+                                    <li><a href="javascript:void(0);">儿童外套</a></li>
+                                    <li><a href="javascript:void(0);">儿童T恤</a></li>
+                                    <li><a href="javascript:void(0);">儿童卫衣</a></li>
+                                    <li><a href="javascript:void(0);">儿童休闲鞋</a></li>
+                                    <li><a href="javascript:void(0);">儿童家居服</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">运动鞋</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">跑步鞋</a></li>
+                                    <li><a href="javascript:void(0);">休闲鞋</a></li>
+                                    <li><a href="javascript:void(0);">篮球鞋</a></li>
+                                    <li><a href="javascript:void(0);">NIKE</a></li>
+                                    <li><a href="javascript:void(0);">阿迪达斯</a></li>
+                                    <li><a href="javascript:void(0);">ASICS</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">运动服饰</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">运动T恤</a></li>
+                                    <li><a href="javascript:void(0);">运动卫衣</a></li>
+                                    <li><a href="javascript:void(0);">运动裤</a></li>
+                                    <li><a href="javascript:void(0);">NIJE</a></li>
+                                    <li><a href="javascript:void(0);">阿迪达斯</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">户外鞋靴</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">登山鞋</a></li>
+                                    <li><a href="javascript:void(0);">工装鞋</a></li>
+                                    <li><a href="javascript:void(0);">越野跑鞋</a></li>
+                                    <li><a href="javascript:void(0);">LOWA</a></li>
+                                    <li><a href="javascript:void(0);">Keen</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">更多分类</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">汽车机油</a></li>
+                                    <li><a href="javascript:void(0);">渔具</a></li>
+                                    <li><a href="javascript:void(0);">跑步机</a></li>
+                                    <li><a href="javascript:void(0);">游泳</a></li>
+                                    <li><a href="javascript:void(0);">运动相机</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_sublist">
+                        <!-- 浮层左边列表 -->
+                        <div class="fore1">
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">腕表</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">瑞士名表</a></li>
+                                    <li><a href="javascript:void(0);">欧美腕表</a></li>
+                                    <li><a href="javascript:void(0);">欧米茄</a></li>
+                                    <li><a href="javascript:void(0);">浪琴</a></li>
+                                    <li><a href="javascript:void(0);">DW</a></li>
+                                    <li><a href="javascript:void(0);">卡西欧</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">大牌眼镜</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">Dior迪奥</a></li>
+                                    <li><a href="javascript:void(0);">PRADA</a></li>
+                                    <li><a href="javascript:void(0);">暴龙</a></li>
+                                    <li><a href="javascript:void(0);">陌森</a></li>
+                                    <li><a href="javascript:void(0);">FURLA</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">潮流饰品</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">项链</a></li>
+                                    <li><a href="javascript:void(0);">手链/手镯</a></li>
+                                    <li><a href="javascript:void(0);">耳饰</a></li>
+                                    <li><a href="javascript:void(0);">戒指</a></li>
+                                    <li><a href="javascript:void(0);">施华洛世奇</a></li>
+                                    <li><a href="javascript:void(0);">潘多拉</a></li>
+                                    <li><a href="javascript:void(0);">apm</a></li>
+                                </ul>
+                            </div>
+                            <div class="fore_list">
+                                <h3><a href="javascript:void(0);">黄金珠宝</a></h3>
+                                <ul class="clearfix">
+                                    <li><a href="javascript:void(0);">周生生</a></li>
+                                    <li><a href="javascript:void(0);">周大福</a></li>
+                                    <li><a href="javascript:void(0);">铂金</a></li>
+                                    <li><a href="javascript:void(0);">钻石</a></li>
+                                    <li><a href="javascript:void(0);">珍珠</a></li>
+                                    <li><a href="javascript:void(0);">水晶玛瑙</a></li>
+                                    <li><a href="javascript:void(0);">翡翠玉石</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-					<script type="text/javascript">
-						//banner左侧内容栏
-						$(function(){
-							//显示左边daohang
-							$('.cat_title').mouseenter(function(){
-								$("#cat_wrap_cat_header").attr("class","cat_header_active");
-							});
-							$('.cat_title').mouseleave(function(){
-								$("#cat_wrap_cat_header").attr("class","cat_header");
-							});
-							var cat_wrap_cat_header_TIME;
-							$('#cat_wrap_cat_header').mouseenter(function(){
-								$("#cat_wrap_cat_header").attr("class","cat_header_active");
-							});
-							$('#cat_wrap_cat_header').mouseleave(function(){
-								clearInterval(cat_wrap_cat_header_TIME);
-								cat_wrap_cat_header_TIME=setTimeout(function(){
-									var flag= $("#cat_wrap_cat_header").attr("data-inSubContent");
-									if(flag==undefined||flag==null){
-										$("#cat_wrap_cat_header").attr("class","cat_header");
-									}
-								},500);
-							});
+                    <script type="text/javascript">
+                        //banner左侧内容栏
+                        $(function () {
+                            //显示左边daohang
+                            $('.cat_title').mouseenter(function () {
+                                $("#cat_wrap_cat_header").attr("class", "cat_header_active");
+                            });
+                            $('.cat_title').mouseleave(function () {
+                                $("#cat_wrap_cat_header").attr("class", "cat_header");
+                            });
+                            var cat_wrap_cat_header_TIME;
+                            $('#cat_wrap_cat_header').mouseenter(function () {
+                                $("#cat_wrap_cat_header").attr("class", "cat_header_active");
+                            });
+                            $('#cat_wrap_cat_header').mouseleave(function () {
+                                clearInterval(cat_wrap_cat_header_TIME);
+                                cat_wrap_cat_header_TIME = setTimeout(function () {
+                                    var flag = $("#cat_wrap_cat_header").attr("data-inSubContent");
+                                    if (flag == undefined || flag == null) {
+                                        $("#cat_wrap_cat_header").attr("class", "cat_header");
+                                    }
+                                }, 500);
+                            });
 
-							var thisTime;
-							//鼠标离开左侧内容栏
-							$('.cat_wrap .cat_list .float').mouseleave(function(even){
-								thisTime = setTimeout(thisMouseOut,500);
-							});
-							//鼠标点击左侧内容栏   滑动出弹层
-							$('.cat_wrap .cat_list .float').mouseenter(function(){
-								$(this).addClass("active").siblings().removeClass("active");
-								clearTimeout(thisTime);
-								var thisUB = $('.cat_wrap .cat_list .float').index($(this));
-								if($.trim($('.cat_subcont .cat_sublist').eq(thisUB).html()) != ""){
-									$('.cat_subcont').addClass('active');
-									$('.cat_sublist').hide();
-									$('.cat_sublist').eq(thisUB).show();
-								}else{
-									$('.cat_subcont').removeClass('active');
-								}
-							});
-							//函数——执行鼠标离开左侧内容栏的动作
-							function thisMouseOut(){
-								$('.cat_subcont').removeClass('active');
-								$('.cat_wrap .cat_list .float').removeClass('active');
-							}
-							$('.cat_subcont').mouseenter(function(){
-								clearTimeout(thisTime);
-								$('.cat_subcont').addClass('active');
-								$("#cat_wrap_cat_header").attr("data-inSubContent",true);
-								$("#cat_wrap_cat_header").attr("class","cat_header_active");
-							});
-							$('.cat_subcont').mouseleave(function(){
-								$('.cat_subcont').removeClass('active');
-								$('.cat_wrap .cat_list .float').removeClass('active');
-								$("#cat_wrap_cat_header").removeAttr("data-inSubContent");
-								$("#cat_wrap_cat_header").attr("class","cat_header");
-							});
-						});
-					</script>
-	</nav>
+                            var thisTime;
+                            //鼠标离开左侧内容栏
+                            $('.cat_wrap .cat_list .float').mouseleave(function (even) {
+                                thisTime = setTimeout(thisMouseOut, 500);
+                            });
+                            //鼠标点击左侧内容栏   滑动出弹层
+                            $('.cat_wrap .cat_list .float').mouseenter(function () {
+                                $(this).addClass("active").siblings().removeClass("active");
+                                clearTimeout(thisTime);
+                                var thisUB = $('.cat_wrap .cat_list .float').index($(this));
+                                if ($.trim($('.cat_subcont .cat_sublist').eq(thisUB).html()) != "") {
+                                    $('.cat_subcont').addClass('active');
+                                    $('.cat_sublist').hide();
+                                    $('.cat_sublist').eq(thisUB).show();
+                                } else {
+                                    $('.cat_subcont').removeClass('active');
+                                }
+                            });
+
+                            //函数——执行鼠标离开左侧内容栏的动作
+                            function thisMouseOut() {
+                                $('.cat_subcont').removeClass('active');
+                                $('.cat_wrap .cat_list .float').removeClass('active');
+                            }
+
+                            $('.cat_subcont').mouseenter(function () {
+                                clearTimeout(thisTime);
+                                $('.cat_subcont').addClass('active');
+                                $("#cat_wrap_cat_header").attr("data-inSubContent", true);
+                                $("#cat_wrap_cat_header").attr("class", "cat_header_active");
+                            });
+                            $('.cat_subcont').mouseleave(function () {
+                                $('.cat_subcont').removeClass('active');
+                                $('.cat_wrap .cat_list .float').removeClass('active');
+                                $("#cat_wrap_cat_header").removeAttr("data-inSubContent");
+                                $("#cat_wrap_cat_header").attr("class", "cat_header");
+                            });
+                        });
+                    </script>
+    </nav>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
+
 <div class="danpin center">
 
-	<div class="biaoti center">华为手机</div>
-	<div class="main center" id="liebiao">
+    <div class="biaoti center">华为手机</div>
+    <div class="main center" id="liebiao">
 
-
-		<div class="clear"></div>
-	</div>
+        <div class="clear"></div>
+    </div>
+    <div class="wrapper">
+        <div class="M-box"></div>
+        <div class="tips">当前是第<span class="now">1</span>页,总共<span class="total"></span>页,总共<span class="count"></span>条数据
+        </div>
+    </div>
 </div>
 
-<div class="wrapper">
-	<div class="eg"></div>
-	<div class="M-box"></div>
-	<div class="tips">当前是第<span class="now">1</span>页,总共<span class="total"></span>页,总共<span class="count"></span>条数据</div></div>
+
 <aside>
 
-	<div id="btmlist">
-		<ul class="clearfix-clearfix">
-			<li>
-				<div class="btmIcon">正</div>
-				<strong class="tit">正品承诺</strong>
-				<span class="desc">正品保障 假一赔十</span>
-			</li>
-			<li>
-				<div class="btmIcon">低</div>
-				<strong class="tit">低价保障</strong>
-				<span class="desc">缩减中间环节 确保低价</span>
-			</li>
-			<li>
-				<div class="btmIcon">退</div>
-				<strong class="tit">30天无忧退货</strong>
-				<span class="desc">国内退货 售后无忧</span>
-			</li>
-			<li>
-				<div class="btmIcon">邮</div>
-				<strong class="tit">满88包邮</strong>
-				<span class="desc">部分特殊商品除外</span>
-			</li>
-		</ul>
-	</div>
-	<div id="aside_guideList">
-		<ul class="aside_guideList_ul">
-			<li>
-				<a href="//www.kaola.com/" class="logokaola" title="网易考拉"></a>
-				<div>
-					<span style="font-size: 12px">关注我们</span>
-					<a href="#">
-						<i class="iconfont icon-weibo1" style="font-size: 32px"></i>
-					</a>
-					<a href="#">
-						<i class="iconfont icon-weibo1" style="font-size: 32px"></i>
-					</a>
-					<a href="#">
-						<i class="iconfont icon-weibo1" style="font-size: 32px"></i>
-					</a>
-				</div>
-			</li>
-			<li class="fuwu">
-				<dl>
-					<dt><strong>考拉保障</strong></dt>
-					<dd><a href="#">假一赔十</a></dd>
-					<dd><a href="#">廉正监督</a></dd>
-				</dl>
-			</li>
-			<li class="fuwu">
-				<dl>
-					<dt><strong>新手指南</strong></dt>
-					<dd><a href="#">购物流程</a></dd>
-					<dd><a href="#">支付方式</a></dd>
-					<dd><a href="#">通关税费</a></dd>
-					<dd><a href="#">常见问题</a></dd>
-				</dl>
-			</li>
-			<li class="fuwu">
-				<dl>
-					<dt><strong>售后服务</strong></dt>
-					<dd><a href="#">退货政策</a></dd>
-					<dd><a href="#">退货流程</a></dd>
-					<dd><a href="#">退款说明</a></dd>
-					<dd><a href="#">联系客服</a></dd>
-				</dl>
-			</li>
-			<li class="fuwu">
-				<dl>
-					<dt><strong>物流配送</strong></dt>
-					<dd><a href="#">配送方式</a></dd>
-					<dd><a href="#">配送服务</a></dd>
-					<dd><a href="#">运费标准</a></dd>
-					<dd><a href="#">物流跟踪</a></dd>
-				</dl>
-			</li>
-			<li class="fuwu">
-				<dl>
-					<dt><strong> 关于我们</strong></dt>
-					<dd><a href="#">联系我们</a></dd>
-					<dd><a href="#">招商合作</a></dd>
-					<dd><a href="#">销售联盟</a></dd>
-					<dd><a href="#">CEO邮箱</a></dd>
-				</dl>
-			</li>
-			<li class="fuwu">
-				<img class="fuwu-img" src="../img/top-erweima.png" alt="">
-				<span class="fuwu-span">扫描下载手机版</span>
-			</li>
-		</ul>
-	</div>
-	<!-- 侧表面栏-->
-	<div id="cebianlan">
-		<ul>
-			<li>
-				<a href="#">
-					<span></span>
-					<span>购物车</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					优惠券
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					★☆口碑爆款
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					99元任选2件
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					大牌满减
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					美容彩妆
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					家居个护
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					母婴儿童
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					9美食保健
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					工厂店精选
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<b></b>
-					top
-				</a>
-			</li>
-		</ul>
-	</div>
-	<!-- 底部 -->
-	<footer>
-		<div id="aboutNEST">
-			<div id="footer-top">
-				<a href="#">About NetEase</a>
-				-
-				<a href="#">公司简介</a>
-				-
-				<a href="#">联系方法</a>
-				-
-				<a href="#">友情链接</a>
-				-
-				<a href="#">招聘信息</a>
-				-
-				<a href="#">客户服务</a>
-				-
-				<a href="#">隐私政策</a>
-				-
-				<a href="#">网络营销</a>
-				-
-				<a href="#">网易考拉 </a>
-			</div>
-			<div id="footer-center">
-				<span>网络文化经营许可证：浙网文[2019]1372-138号&nbsp;&nbsp;&nbsp; </span>
-				<span> 增值电信业务经营许可证：浙B2-20160288&nbsp;&nbsp;&nbsp;</span>
-				<a href="#">自营经营者信息&nbsp;&nbsp;</a>
-				<span>（浙）网械平台备字[2018]第00007号 </span>
-			</div>
-			<div id="footer-bottom">
-				<a href="#"><img src="../img/footer/footer-1.png" alt=""></a>
-				<a href="#">浙公网安备 33010802002216号&nbsp;&nbsp;</a>
-				<a href="#">&nbsp;网易公司版权所有©1997-2019&nbsp;&nbsp;</a>
-				<a href="#">互联网药品信息服务资格证书编号（浙）-2017-0027&nbsp;&nbsp;</a>
-				<a href="#">浙ICP备16011229号-6</a>
-			</div>
-			<div id="footer-img">
-				<a href="#"><img src="../img/footer/footer-2.png" alt=""></a>
-				<a href="#"><img src="../img/footer/footer-3.png" alt=""></a>
-				<a href="#"><img class="xuke" src="../img/footer/footer-4.gif" alt=""></a>
-			</div>
-		</div>
-	</footer>
+    <div id="btmlist">
+        <ul class="clearfix-clearfix">
+            <li>
+                <div class="btmIcon">正</div>
+                <strong class="tit">正品承诺</strong>
+                <span class="desc">正品保障 假一赔十</span>
+            </li>
+            <li>
+                <div class="btmIcon">低</div>
+                <strong class="tit">低价保障</strong>
+                <span class="desc">缩减中间环节 确保低价</span>
+            </li>
+            <li>
+                <div class="btmIcon">退</div>
+                <strong class="tit">30天无忧退货</strong>
+                <span class="desc">国内退货 售后无忧</span>
+            </li>
+            <li>
+                <div class="btmIcon">邮</div>
+                <strong class="tit">满88包邮</strong>
+                <span class="desc">部分特殊商品除外</span>
+            </li>
+        </ul>
+    </div>
+    <div id="aside_guideList">
+        <ul class="aside_guideList_ul">
+            <li>
+                <a href="//www.kaola.com/" class="logokaola" title="网易考拉"></a>
+                <div>
+                    <span style="font-size: 12px">关注我们</span>
+                    <a href="#">
+                        <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
+                    </a>
+                    <a href="#">
+                        <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
+                    </a>
+                    <a href="#">
+                        <i class="iconfont icon-weibo1" style="font-size: 32px"></i>
+                    </a>
+                </div>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>考拉保障</strong></dt>
+                    <dd><a href="#">假一赔十</a></dd>
+                    <dd><a href="#">廉正监督</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>新手指南</strong></dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">支付方式</a></dd>
+                    <dd><a href="#">通关税费</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>售后服务</strong></dt>
+                    <dd><a href="#">退货政策</a></dd>
+                    <dd><a href="#">退货流程</a></dd>
+                    <dd><a href="#">退款说明</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong>物流配送</strong></dt>
+                    <dd><a href="#">配送方式</a></dd>
+                    <dd><a href="#">配送服务</a></dd>
+                    <dd><a href="#">运费标准</a></dd>
+                    <dd><a href="#">物流跟踪</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <dl>
+                    <dt><strong> 关于我们</strong></dt>
+                    <dd><a href="#">联系我们</a></dd>
+                    <dd><a href="#">招商合作</a></dd>
+                    <dd><a href="#">销售联盟</a></dd>
+                    <dd><a href="#">CEO邮箱</a></dd>
+                </dl>
+            </li>
+            <li class="fuwu">
+                <img class="fuwu-img" src="../img/top-erweima.png" alt="">
+                <span class="fuwu-span">扫描下载手机版</span>
+            </li>
+        </ul>
+    </div>
+    <!-- 侧表面栏-->
+    <div id="cebianlan">
+        <ul>
+            <li>
+                <a href="#">
+                    <span></span>
+                    <span>购物车</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    优惠券
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    ★☆口碑爆款
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    99元任选2件
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    大牌满减
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    美容彩妆
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    家居个护
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    母婴儿童
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    9美食保健
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    工厂店精选
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <b></b>
+                    top
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 底部 -->
+    <footer>
+        <div id="aboutNEST">
+            <div id="footer-top">
+                <a href="#">About NetEase</a>
+                -
+                <a href="#">公司简介</a>
+                -
+                <a href="#">联系方法</a>
+                -
+                <a href="#">友情链接</a>
+                -
+                <a href="#">招聘信息</a>
+                -
+                <a href="#">客户服务</a>
+                -
+                <a href="#">隐私政策</a>
+                -
+                <a href="#">网络营销</a>
+                -
+                <a href="#">网易考拉 </a>
+            </div>
+            <div id="footer-center">
+                <span>网络文化经营许可证：浙网文[2019]1372-138号&nbsp;&nbsp;&nbsp; </span>
+                <span> 增值电信业务经营许可证：浙B2-20160288&nbsp;&nbsp;&nbsp;</span>
+                <a href="#">自营经营者信息&nbsp;&nbsp;</a>
+                <span>（浙）网械平台备字[2018]第00007号 </span>
+            </div>
+            <div id="footer-bottom">
+                <a href="#"><img src="../img/footer/footer-1.png" alt=""></a>
+                <a href="#">浙公网安备 33010802002216号&nbsp;&nbsp;</a>
+                <a href="#">&nbsp;网易公司版权所有©1997-2019&nbsp;&nbsp;</a>
+                <a href="#">互联网药品信息服务资格证书编号（浙）-2017-0027&nbsp;&nbsp;</a>
+                <a href="#">浙ICP备16011229号-6</a>
+            </div>
+            <div id="footer-img">
+                <a href="#"><img src="../img/footer/footer-2.png" alt=""></a>
+                <a href="#"><img src="../img/footer/footer-3.png" alt=""></a>
+                <a href="#"><img class="xuke" src="../img/footer/footer-4.gif" alt=""></a>
+            </div>
+        </div>
+    </footer>
 </aside>
 <script type="text/javascript">
-	let header_height=document.getElementsByTagName("header")[0].offsetHeight+5;
-	let sy=0;
-	let search_float_div=document.getElementById("search_float_div");
-	let top_div=document.getElementById("top");
-	window.onscroll=function () {
-		sy = document.documentElement.scrollTop || document.body.scrollTop;//滚动条y轴上的距离
-		if(sy>=header_height){
-			search_float_div.style.display="block";
-			top_div.style.display="none";
-		}else{
-			search_float_div.style.display="none";
-			top_div.style.display="block";
-		}
-	}
+    let header_height = document.getElementsByTagName("header")[0].offsetHeight + 5;
+    let sy = 0;
+    let search_float_div = document.getElementById("search_float_div");
+    let top_div = document.getElementById("top");
+    window.onscroll = function () {
+        sy = document.documentElement.scrollTop || document.body.scrollTop;//滚动条y轴上的距离
+        if (sy >= header_height) {
+            search_float_div.style.display = "block";
+            top_div.style.display = "none";
+        } else {
+            search_float_div.style.display = "none";
+            top_div.style.display = "block";
+        }
+    }
 
 </script>
 
 
 <script type="text/javascript">
-	$(function(){
-		show(1);
-	})
+    $(function () {
+        show(1);
+    })
 
 
 </script>
 
 <script type="text/javascript">
-	function show(page){
-		$.ajax({
-			type:"get",
-			url:"/koala/goodsList.do?page="+page ,
-			dataType:"json",
-			success:function(data){
-				if(data.code == 1){
-					/* if(data.info.user !=  null){
+    function show(page) {
+        $.ajax({
+            type: "get",
+            url: "/koala/goodsList.do?page=" + page,
+            dataType: "json",
+            success: function (data) {
+                if (data.code == 1) {
+                    /* if(data.info.user !=  null){
 
 
-						$("#login").empty();
+                        $("#login").empty();
 
-						var html1='<h3>'+ data.info.user.username +'</h3>'
+                        var html1='<h3>'+ data.info.user.username +'</h3>'
 
-						$("#login").append($(html1));
-					} */
-					var infos = data.data.rows;
+                        $("#login").append($(html1));
+                    } */
+                    var infos = data.data.rows;
+                    $("#liebiao").empty();
+                    $(infos).each(function () {
+                        var html ='<div class="mingxing fl mb20" style="border:1px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border=\'1px solid #fff\'" onmousemove="this.style.border=\'1px solid red\'">';
+                        html += '<div class="sub_mingxing"><a href="?gid=' + this.gid + '"><a href="item.html?gid='+this.gid+'"><img src="' + this.gimg + '" alt=""></a></a></div>';
+                        html += '<div class="youhui"><a href="item.html?gid='+this.gid+'">' + this.gname + '</a></div>';
+                        html +=  '<div>&nbsp;</div>';
+                        html += '<div class="jiage">' + this.gprice + '元</div></div>';
 
-					$(infos).each(function(){
+                        $("#liebiao").append($(html));
 
+                    })
+                    var total = data.data.total;
+                    // ceil向上取整
+                    var totalPage = Math.ceil(total / 50);
+                    $('.total').text(totalPage);
+                    $('.count').text(total);
+                    var pno = $('.now').text();
+                    //分页设置
+                    $('.M-box').pagination({
+                        pageCount: totalPage,  // 总页数
+                        current: pno,//当前第几页
+                        jump: true,  // 是否显示跳转相关元素
+                        jumpBtn: 'go', // 跳转按钮显示文字
+                        coping: true,    //是否显示首页末页
+                        homePage: '首页',
+                        endPage: '末页',
+                        prevContent: '<<',  // 上一页功能 显示文字信息
+                        nextContent: '>>',
+                        callback: function (index) {  // 点击不同的页码按钮，或者其他跳转的按钮，会调用该方法
+                            // index.getCurrent() 获取当前要使用的页码
+                            $('.now').text(index.getCurrent());
+                            $('.total').text(totalPage);
+                            $('.count').text(total);
+                            show(index.getCurrent());
+                        }
+                    });
 
-
-						var html ='<div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border=\'2px solid #fff\'" onmousemove="this.style.border=\'2px solid red\'">';
-						/* html +=' onmouseout="this.style.border='2px solid #fff' " onmousemove="this.style.border='2px solid red'">'; */
-						html +='<div class="sub_mingxing"><a href="?gid='+this.gid+'"><img src="'+this.gimg+'" alt=""></a></div>';
-					/*	html +='<div class="pinpai"><a href="http://localhost:8080/xiaomisyspro/xiaomi/xiangqing.html?gid='+this.gid+'">'+this.goodsName+'</a></div>';
-				*/		html +='<div class="youhui">'+this.gname +'</div>';
-						html +='<div class="jiage">'+ this.gprice+'元</div>';
-
-
-
-						$("#liebiao").append($(html));
-
-
-
-					})
-					var total = data.data.total;
-					// ceil向上取整
-					var totalPage = Math.ceil(total / 50);
-					$('.total').text(totalPage);
-					$('.count').text(total);
-					var pno = $('.now').text();
-					//分页设置
-					$('.M-box').pagination({
-						pageCount: totalPage,  // 总页数
-						current:pno,//当前第几页
-						jump: true,  // 是否显示跳转相关元素
-						jumpBtn: 'go', // 跳转按钮显示文字
-						coping: true,    //是否显示首页末页
-						homePage: '首页',
-						endPage: '末页',
-						prevContent: '<<',  // 上一页功能 显示文字信息
-						nextContent: '>>',
-						callback:function(index){  // 点击不同的页码按钮，或者其他跳转的按钮，会调用该方法
-							// index.getCurrent() 获取当前要使用的页码
-							$('.now').text(index.getCurrent());
-							$('.total').text(totalPage);
-							$('.count').text(total);
-							show(index.getCurrent());
-						}
-					});
-
-				}
-			}
-		})
-	}
+                }
+            }
+        })
+    }
 
 </script>
+
 </body>
 
 </html>
