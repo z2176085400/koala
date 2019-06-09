@@ -25,5 +25,12 @@ public class GoodsController {
 
         return goodsService.findAll(page);
     }
+    @CrossOrigin//允许跨域
+    @RequestMapping(value = "goodsDatails.do", method = RequestMethod.GET)
+    public JsonBean goodsDatails(Integer gid) {
+
+
+        return goodsService.goodsDetails(gid);
+    }
 
 }

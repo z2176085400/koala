@@ -30,4 +30,12 @@ public class GoodsServiceImpl implements GoodsService {
 
        return JsonBean.success("ok",map);
     }
+
+    @Override
+    public JsonBean goodsDetails(Integer gid) {
+        Goods goods = goodsMapper.selectByPrimaryKey(gid);
+        return JsonBean.success("ok",goods);
+    }
+
+
 }

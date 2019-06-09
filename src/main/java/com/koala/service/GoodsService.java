@@ -5,4 +5,5 @@ import com.koala.vo.JsonBean;
 public interface GoodsService {
    JsonBean findAll(Integer page);
 
+   JsonBean goodsDetails(Integer gid);
 }
