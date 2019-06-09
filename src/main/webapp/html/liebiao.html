@@ -3,24 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width">
+
     <title>首页</title>
+
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/style.css">
-    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../wenzitubiao/font_a2huyqo64b/iconfont.css">
+    <link rel="stylesheet" href="../css/youhuiqu.css">
+    <link href="../pagination/pagination.css" rel="stylesheet" type="text/css"/>
+
     <script src="../lb/jquery-1.11.3.js"></script>
     <script src="../this_locality.js/index.top.js"></script>
     <script src="../lb/axios.js"></script>
     <script src="../this_locality.js/comfy.js"></script>
-    <link rel="stylesheet" href="../wenzitubiao/font_a2huyqo64b/iconfont.css">
-    <link rel="stylesheet" href="../css/lunbo.css">
     <script src="../js/common.lunbo.js"></script>
     <script src="../this_locality.js/cook.js"></script>
-    <link rel="stylesheet" href="../css/youhuiqu.css">
-    <link href="../pagination/pagination.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../pagination/jquery.pagination.js"></script>
 
     <style type="text/css">
@@ -835,7 +835,16 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- 分类结束 -->
 
+        <div style="position:relative;">
+            <!-- banner上面浮层 -->
+            <div class="cat_wrap">
                     <script type="text/javascript">
                         //banner左侧内容栏
                         $(function () {
@@ -899,6 +908,8 @@
                             });
                         });
                     </script>
+                </div>
+        </div>
     </nav>
 </div>
 
@@ -907,17 +918,10 @@
 <div class="danpin center">
 
     <div class="biaoti center">华为手机</div>
-    <div class="main center" id="liebiao">
+    <div class="main center" id="liebiao"></div>
+    <div class="tips">当前是第<span class="now">1</span>页,总共<span class="total"></span>页,总共<span class="count"></span>条数据</div>
 
-        <div class="clear"></div>
-    </div>
-    <div class="wrapper">
-        <div class="M-box"></div>
-        <div class="tips">当前是第<span class="now">1</span>页,总共<span class="total"></span>页,总共<span class="count"></span>条数据
-        </div>
-    </div>
 </div>
-
 
 <aside>
 
@@ -1073,49 +1077,9 @@
             </li>
         </ul>
     </div>
-    <!-- 底部 -->
-    <footer>
-        <div id="aboutNEST">
-            <div id="footer-top">
-                <a href="#">About NetEase</a>
-                -
-                <a href="#">公司简介</a>
-                -
-                <a href="#">联系方法</a>
-                -
-                <a href="#">友情链接</a>
-                -
-                <a href="#">招聘信息</a>
-                -
-                <a href="#">客户服务</a>
-                -
-                <a href="#">隐私政策</a>
-                -
-                <a href="#">网络营销</a>
-                -
-                <a href="#">网易考拉 </a>
-            </div>
-            <div id="footer-center">
-                <span>网络文化经营许可证：浙网文[2019]1372-138号&nbsp;&nbsp;&nbsp; </span>
-                <span> 增值电信业务经营许可证：浙B2-20160288&nbsp;&nbsp;&nbsp;</span>
-                <a href="#">自营经营者信息&nbsp;&nbsp;</a>
-                <span>（浙）网械平台备字[2018]第00007号 </span>
-            </div>
-            <div id="footer-bottom">
-                <a href="#"><img src="../img/footer/footer-1.png" alt=""></a>
-                <a href="#">浙公网安备 33010802002216号&nbsp;&nbsp;</a>
-                <a href="#">&nbsp;网易公司版权所有©1997-2019&nbsp;&nbsp;</a>
-                <a href="#">互联网药品信息服务资格证书编号（浙）-2017-0027&nbsp;&nbsp;</a>
-                <a href="#">浙ICP备16011229号-6</a>
-            </div>
-            <div id="footer-img">
-                <a href="#"><img src="../img/footer/footer-2.png" alt=""></a>
-                <a href="#"><img src="../img/footer/footer-3.png" alt=""></a>
-                <a href="#"><img class="xuke" src="../img/footer/footer-4.gif" alt=""></a>
-            </div>
-        </div>
-    </footer>
 </aside>
+
+
 <script type="text/javascript">
     let header_height = document.getElementsByTagName("header")[0].offsetHeight + 5;
     let sy = 0;
@@ -1131,16 +1095,12 @@
             top_div.style.display = "block";
         }
     }
-
 </script>
-
 
 <script type="text/javascript">
     $(function () {
         show(1);
     })
-
-
 </script>
 
 <script type="text/javascript">
@@ -1152,12 +1112,8 @@
             success: function (data) {
                 if (data.code == 1) {
                     /* if(data.info.user !=  null){
-
-
                         $("#login").empty();
-
                         var html1='<h3>'+ data.info.user.username +'</h3>'
-
                         $("#login").append($(html1));
                     } */
                     var infos = data.data.rows;
@@ -1168,9 +1124,7 @@
                         html += '<div class="youhui"><a href="item.html?gid='+this.gid+'">' + this.gname + '</a></div>';
                         html +=  '<div>&nbsp;</div>';
                         html += '<div class="jiage">' + this.gprice + '元</div></div>';
-
                         $("#liebiao").append($(html));
-
                     })
                     var total = data.data.total;
                     // ceil向上取整
@@ -1197,12 +1151,10 @@
                             show(index.getCurrent());
                         }
                     });
-
                 }
             }
         })
     }
-
 </script>
 
 </body>
