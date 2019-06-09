@@ -12,7 +12,9 @@ com\koala\entity\Details.class
 com\koala\controller\CommonException.class
 com\koala\dao\UserMapper.class
 com\koala\entity\HuaWei.class
+com\koala\service\impl\GoodsServiceImpl.class
 com\koala\dao\ShopsMapper.class
+com\koala\service\GoodsService.class
 com\koala\entity\FatherType.class
 com\koala\realm\MyRealm.class
 com\koala\dao\PropertyMapper.class
@@ -24,5 +26,6 @@ com\koala\dao\SearchMapper.class
 com\koala\dao\SonTypeMapper.class
 com\koala\service\impl\UserServiceImpl.class
 com\koala\dao\HuaWeiMapper.class
+com\koala\controller\GoodsController.class
 com\koala\entity\Shops.class
 com\koala\vo\JsonBean.class

@@ -4,16 +4,15 @@
   <resultMap id="BaseResultMap" type="com.koala.entity.Goods">
     <id column="gid" jdbcType="INTEGER" property="gid" />
     <result column="gName" jdbcType="VARCHAR" property="gname" />
-    <result column="gDesc" jdbcType="VARCHAR" property="gdesc" />
     <result column="gImg" jdbcType="VARCHAR" property="gimg" />
-    <result column="gPrice" jdbcType="INTEGER" property="gprice" />
-    <result column="gCountry" jdbcType="INTEGER" property="gcountry" />
+    <result column="gPrice" jdbcType="VARCHAR" property="gprice" />
+    <result column="gCountry" jdbcType="VARCHAR" property="gcountry" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="sid" jdbcType="INTEGER" property="sid" />
     <result column="hid" jdbcType="INTEGER" property="hid" />
   </resultMap>
   <sql id="Base_Column_List">
-    gid, gName, gDesc, gImg, gPrice, gCountry, status, sid, hid
+    gid, gName, gImg, gPrice, gCountry, status, sid, hid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -26,12 +25,12 @@
     where gid = #{gid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.koala.entity.Goods">
-    insert into t_goods (gid, gName, gDesc, 
-      gImg, gPrice, gCountry, 
-      status, sid, hid)
-    values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{gdesc,jdbcType=VARCHAR}, 
-      #{gimg,jdbcType=VARCHAR}, #{gprice,jdbcType=INTEGER}, #{gcountry,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{hid,jdbcType=INTEGER})
+    insert into t_goods (gid, gName, gImg, 
+      gPrice, gCountry, status, 
+      sid, hid)
+    values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{gimg,jdbcType=VARCHAR}, 
+      #{gprice,jdbcType=VARCHAR}, #{gcountry,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{sid,jdbcType=INTEGER}, #{hid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.koala.entity.Goods">
     insert into t_goods
@@ -41,9 +40,6 @@
       </if>
       <if test="gname != null">
         gName,
-      </if>
-      <if test="gdesc != null">
-        gDesc,
       </if>
       <if test="gimg != null">
         gImg,
@@ -71,17 +67,14 @@
       <if test="gname != null">
         #{gname,jdbcType=VARCHAR},
       </if>
-      <if test="gdesc != null">
-        #{gdesc,jdbcType=VARCHAR},
-      </if>
       <if test="gimg != null">
         #{gimg,jdbcType=VARCHAR},
       </if>
       <if test="gprice != null">
-        #{gprice,jdbcType=INTEGER},
+        #{gprice,jdbcType=VARCHAR},
       </if>
       <if test="gcountry != null">
-        #{gcountry,jdbcType=INTEGER},
+        #{gcountry,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -100,17 +93,14 @@
       <if test="gname != null">
         gName = #{gname,jdbcType=VARCHAR},
       </if>
-      <if test="gdesc != null">
-        gDesc = #{gdesc,jdbcType=VARCHAR},
-      </if>
       <if test="gimg != null">
         gImg = #{gimg,jdbcType=VARCHAR},
       </if>
       <if test="gprice != null">
-        gPrice = #{gprice,jdbcType=INTEGER},
+        gPrice = #{gprice,jdbcType=VARCHAR},
       </if>
       <if test="gcountry != null">
-        gCountry = #{gcountry,jdbcType=INTEGER},
+        gCountry = #{gcountry,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -127,13 +117,19 @@
   <update id="updateByPrimaryKey" parameterType="com.koala.entity.Goods">
     update t_goods
     set gName = #{gname,jdbcType=VARCHAR},
-      gDesc = #{gdesc,jdbcType=VARCHAR},
       gImg = #{gimg,jdbcType=VARCHAR},
-      gPrice = #{gprice,jdbcType=INTEGER},
-      gCountry = #{gcountry,jdbcType=INTEGER},
+      gPrice = #{gprice,jdbcType=VARCHAR},
+      gCountry = #{gcountry,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       sid = #{sid,jdbcType=INTEGER},
       hid = #{hid,jdbcType=INTEGER}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_goods
+
+  </select>
+
 </mapper>

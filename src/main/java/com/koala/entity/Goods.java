@@ -5,13 +5,11 @@ public class Goods {
 
     private String gname;
 
-    private String gdesc;
-
     private String gimg;
 
-    private Integer gprice;
+    private String gprice;
 
-    private Integer gcountry;
+    private String gcountry;
 
     private Integer status;
 
@@ -35,14 +33,6 @@ public class Goods {
         this.gname = gname == null ? null : gname.trim();
     }
 
-    public String getGdesc() {
-        return gdesc;
-    }
-
-    public void setGdesc(String gdesc) {
-        this.gdesc = gdesc == null ? null : gdesc.trim();
-    }
-
     public String getGimg() {
         return gimg;
     }
@@ -51,20 +41,20 @@ public class Goods {
         this.gimg = gimg == null ? null : gimg.trim();
     }
 
-    public Integer getGprice() {
+    public String getGprice() {
         return gprice;
     }
 
-    public void setGprice(Integer gprice) {
-        this.gprice = gprice;
+    public void setGprice(String gprice) {
+        this.gprice = gprice == null ? null : gprice.trim();
     }
 
-    public Integer getGcountry() {
+    public String getGcountry() {
         return gcountry;
     }
 
-    public void setGcountry(Integer gcountry) {
-        this.gcountry = gcountry;
+    public void setGcountry(String gcountry) {
+        this.gcountry = gcountry == null ? null : gcountry.trim();
     }
 
     public Integer getStatus() {

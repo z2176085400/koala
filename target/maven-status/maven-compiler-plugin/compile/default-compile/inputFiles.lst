@@ -9,7 +9,9 @@ C:\Users\21760\Desktop\koala\src\main\java\com\koala\entity\FatherType.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\entity\Shops.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\vo\JsonBean.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\entity\User.java
+C:\Users\21760\Desktop\koala\src\main\java\com\koala\controller\GoodsController.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\entity\Search.java
+C:\Users\21760\Desktop\koala\src\main\java\com\koala\service\GoodsService.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\dao\SonTypeMapper.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\entity\Details.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\entity\Property.java
@@ -24,5 +26,6 @@ C:\Users\21760\Desktop\koala\src\main\java\com\koala\dao\ShopsMapper.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\realm\MyRealm.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\dao\SearchMapper.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\dao\HuaWeiMapper.java
+C:\Users\21760\Desktop\koala\src\main\java\com\koala\service\impl\GoodsServiceImpl.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\dao\UserMapper.java
 C:\Users\21760\Desktop\koala\src\main\java\com\koala\entity\GrandpaType.java
