@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koala.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.koala.entity.Order">
+    <id column="orderid" jdbcType="INTEGER" property="orderid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="gPrice" jdbcType="DOUBLE" property="gprice" />
+    <result column="ordercount" jdbcType="INTEGER" property="ordercount" />
+    <result column="ordertime" jdbcType="TIMESTAMP" property="ordertime" />
+    <result column="merchant" jdbcType="VARCHAR" property="merchant" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderid,uid, gid, gPrice, ordercount, ordertime, merchant, number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_order
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_order
+    where uid= #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.koala.entity.Order">
+    insert into t_order (uid, gid, gPrice,
+      ordercount, ordertime, merchant,
+      number)
+    values ( #{uid,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER}, #{gprice,jdbcType=DOUBLE},
+      #{ordercount,jdbcType=INTEGER}, #{ordertime,jdbcType=TIMESTAMP}, #{merchant,jdbcType=VARCHAR},
+      #{number,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.koala.entity.Order">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="gprice != null">
+        gPrice,
+      </if>
+      <if test="ordercount != null">
+        ordercount,
+      </if>
+      <if test="ordertime != null">
+        ordertime,
+      </if>
+      <if test="merchant != null">
+        merchant,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        uid=#{uid,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="gprice != null">
+        #{gprice,jdbcType=DOUBLE},
+      </if>
+      <if test="ordercount != null">
+        #{ordercount,jdbcType=INTEGER},
+      </if>
+      <if test="ordertime != null">
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="merchant != null">
+        #{merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>
